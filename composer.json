@@ -1,0 +1,24 @@
+{
+    "name": "secom-tocantins/manager",
+    "description": "Gerenciador de Orgão Público",
+    "license": "BSD-3-Clause",
+    "keywords": [],
+    "homepage": "http://web.secom.to.gov.br",
+    "authors": [
+        {
+            "name": "Carlos André Ferrari",
+            "email": "caferrari@gmail.com"
+        }
+    ],
+    "minimum-stability" : "dev",
+    "require": {
+        "php": ">=5.3.3",
+	"zendframework/zend-mvc": ">2.1",
+        "zendframework/zend-config": ">2.1",
+        "zendframework/zend-cache": ">2.1",
+        "zendframework/zend-authentication": ">2.1",
+	"zendframework/zend-developer-tools": "dev-master",
+        "doctrine/doctrine-orm-module": "dev-master",
+        "caferrari/zf2-simple-crud-module": "dev-master"
+    }
+}
