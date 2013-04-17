@@ -52,7 +52,7 @@ return array(
             // 'raca' => 'Clinica\Controller\Raca',
             // 'cliente' => 'Clinica\Controller\Cliente',
             // 'animal' => 'Clinica\Controller\Animal',
-            // 'usuario' => 'Clinica\Controller\Usuario',
+            'usuario' => 'Base\Controller\Usuario',
         ),
     ),
     'view_manager' => array(
