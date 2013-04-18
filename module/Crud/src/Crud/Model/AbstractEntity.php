@@ -53,7 +53,7 @@ abstract class AbstractEntity
     {
         $inputFilter = $this->getInputFilter();
         $inputFilter->setData($this->toArray());
-        return $inputFilter()->isValid();
+        return $inputFilter->isValid();
     }
 
     public function __toString()

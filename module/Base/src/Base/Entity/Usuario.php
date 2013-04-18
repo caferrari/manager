@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM,
 
 /**
  * @ORM\Table(name="usuario")
- * @ORM\Entity(repositoryClass="Base\Repository\Usuario")
+ * @ORM\Entity(repositoryClass="Base\Repository\Usuario") @ORM\HasLifecycleCallbacks
  */
 class Usuario extends AbstractEntity
 {
@@ -44,6 +44,14 @@ class Usuario extends AbstractEntity
      * @ORM\Column(type="string", length=40)
      */
     protected $salt;
+
+    /** @ORM\PreFlush */
+    public function validate($event)
+    {
+        if (!$this->isValid()) {
+            throw new \RunTimeException('Dados inválidos');
+        }
+    }
 
     public function __set($var, $value)
     {

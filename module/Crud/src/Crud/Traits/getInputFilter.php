@@ -21,9 +21,16 @@ trait getInputFilter
 
     private function getInputFilterClassName()
     {
-        $classParts = explode('\\', get_called_class());
+        $class = get_called_class();
+        $class = str_replace('DoctrineORMModule\\Proxy\\__CG__\\', '', $class);
+        $classParts = explode('\\', $class);
         $classParts[1] = 'Filter';
         return implode('\\', $classParts);
+    }
+
+    public function __toString()
+    {
+        return json_encode($this->toArray());
     }
 
 }
