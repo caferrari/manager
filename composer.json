@@ -17,8 +17,9 @@
         "zendframework/zend-config": ">2.1",
         "zendframework/zend-cache": ">2.1",
         "zendframework/zend-authentication": ">2.1",
-	"zendframework/zend-developer-tools": "dev-master",
-        "doctrine/doctrine-orm-module": "dev-master",
-        "caferrari/zf2-simple-crud-module": "dev-master"
+        "zendframework/zend-session": ">2.1",
+        "zendframework/zend-math": ">2.1",
+        "zendframework/zend-developer-tools": "dev-master",
+        "doctrine/doctrine-orm-module": "dev-master"
     }
 }
