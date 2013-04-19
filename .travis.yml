@@ -1,0 +1,17 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+
+matrix:
+  allow_failures:
+    - php: 5.5
+
+before_script:
+  - psql -h 127.0.0.1 -c 'create database manager_test;' -U postgres
+  - mkdir data/DoctrineORMModule/Proxy -p
+  - phpenv rehash
+  - composer install --dev --prefer-dist
+
+script: vendor/bin/phpunit --configuration tests/phpunit.xml
