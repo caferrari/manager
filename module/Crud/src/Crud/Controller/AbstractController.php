@@ -41,11 +41,11 @@ abstract class AbstractController extends AbstractActionController
 
     public function indexAction()
     {
-        $especies = $this->getRepository()->findAll();
+        $dados = $this->getRepository()->findAll();
 
         $page = (int)$this->getRequest()->getQuery('page', '1');
 
-        $paginator = new Paginator(new ArrayAdapter($especies));
+        $paginator = new Paginator(new ArrayAdapter($dados));
         $paginator->setCurrentPageNumber($page);
         $paginator->setDefaultItemCountPerPage(20);
         return array('data' => $paginator, 'page' => $page);
@@ -102,7 +102,7 @@ abstract class AbstractController extends AbstractActionController
     public function excluirAction()
     {
         $id = $this->getRequest()->getQuery('id', false);
-        if (is_numeric($id)){
+        if (is_numeric($id)) {
             $this->getRepository()->delete($id);
             $this->success($this->getMessage('delete', 'success'));
         } else {

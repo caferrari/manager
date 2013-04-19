@@ -19,8 +19,7 @@ class Usuario extends AbstractRepository
 
         $entity = $this->getReference($data['id']);
 
-        if ('' === $data['senha'])
-        {
+        if ('' === $data['senha']) {
             unset($data['senha']);
         } else {
             $entity->regenerateSalt();
