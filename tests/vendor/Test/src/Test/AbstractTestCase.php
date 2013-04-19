@@ -33,8 +33,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
         $this->application = $this->serviceManager->get('Application');
 
-        exec($pathDir . 'tests/vendor/bin/doctrine-module orm:schema-tool:drop --force');
-        exec($pathDir . 'tests/vendor/bin/doctrine-module orm:schema-tool:create');
+        shell_exec($pathDir . 'tests/vendor/bin/doctrine-module orm:schema-tool:drop --force');
+        shell_exec($pathDir . 'tests/vendor/bin/doctrine-module orm:schema-tool:create');
     }
 
     public function tearDown()

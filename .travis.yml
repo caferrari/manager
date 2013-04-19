@@ -14,4 +14,4 @@ before_script:
   - phpenv rehash
   - composer install --dev --prefer-source
 
-script: vendor/bin/phpunit --configuration tests/phpunit.xml
+script: vendor/bin/phpunit --configuration tests/phpunit.xml  --coverage-text
