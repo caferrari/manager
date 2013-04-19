@@ -13,7 +13,7 @@ return array(
         'module_paths' => array(
             './module',
             './vendor',
-            './tests/module'
+            './tests/vendor'
         ),
     ),
 );

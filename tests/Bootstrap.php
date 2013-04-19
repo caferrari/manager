@@ -2,7 +2,7 @@
 
 namespace Diarias;
 
-require_once(__DIR__ . '/module/Test/src/Test/AbstractBootstrap.php');
+require_once(__DIR__ . '/vendor/Test/src/Test/AbstractBootstrap.php');
 
 use Test\AbstractBootstrap;
 
