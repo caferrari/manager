@@ -2,7 +2,7 @@
 
 namespace Base\Form;
 
-use Crud\Form\AbstractForm;
+use Crud\AbstractForm;
 
 class Usuario extends AbstractForm
 {

@@ -73,7 +73,7 @@ return array(
     ),
     'view_helpers' => array(
         'invokables' => array(
-            'bootstrapRow' => 'Crud\Form\View\Helper\BootstrapRow',
+            'bootstrapRow' => 'Crud\Helper\BootstrapRow',
             'FlashMessages' => 'Crud\View\Helper\FlashMessages',
         )
     )

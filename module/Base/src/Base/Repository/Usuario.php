@@ -2,12 +2,12 @@
 
 namespace Base\Repository;
 
-use Crud\Repository\AbstractRepository;
+use Crud\AbstractRepository;
 
 class Usuario extends AbstractRepository
 {
 
-    protected $listQuery = "SELECT e FROM Base\Entity\Usuario e ORDER BY e.nome";
+    protected $listQuery = 'SELECT e FROM Base\\Entity\\Usuario e ORDER BY e.nome';
 
     public function findByEmail($email)
     {

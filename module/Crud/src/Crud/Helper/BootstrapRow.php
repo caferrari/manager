@@ -1,6 +1,6 @@
 <?php
 
-namespace Crud\Form\View\Helper;
+namespace Crud\Helper;
 
 use Zend\Form\View\Helper\FormRow,
     Zend\Form\ElementInterface;

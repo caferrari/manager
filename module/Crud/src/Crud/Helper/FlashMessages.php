@@ -1,6 +1,6 @@
 <?php
 
-namespace Crud\View\Helper;
+namespace Crud\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 

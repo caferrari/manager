@@ -1,6 +1,6 @@
 <?php
 
-namespace Crud\Controller;
+namespace Crud;
 
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\Paginator\Paginator,

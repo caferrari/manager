@@ -1,6 +1,6 @@
 <?php
 
-namespace Crud\Model;
+namespace Crud;
 
 use Zend\InputFilter\InputFilter,
     \RuntimeException;
@@ -8,7 +8,7 @@ use Zend\InputFilter\InputFilter,
 abstract class AbstractEntity
 {
 
-    use \Crud\Traits\getInputFilter;
+    use \Crud\GetInputFilter;
 
     public function __construct(array $data = null)
     {

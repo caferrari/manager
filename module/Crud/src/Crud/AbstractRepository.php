@@ -1,6 +1,6 @@
 <?php
 
-namespace Crud\Repository;
+namespace Crud;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -2,7 +2,7 @@
 
 namespace Base\Controller;
 
-use Crud\Controller\AbstractController;
+use Crud\AbstractController;
 
 class Usuario extends AbstractController
 {

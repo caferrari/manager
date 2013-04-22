@@ -1,10 +1,10 @@
 <?php
 
-namespace Crud\Traits;
+namespace Crud;
 
 use \RuntimeException;
 
-trait getInputFilter
+trait GetInputFilter
 {
 
     protected $inputFilter;

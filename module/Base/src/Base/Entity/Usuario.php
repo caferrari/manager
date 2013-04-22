@@ -3,7 +3,7 @@
 namespace Base\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
-    Crud\Model\AbstractEntity,
+    Crud\AbstractEntity,
     Zend\Crypt\Password\Bcrypt;
 
 /**
@@ -65,13 +65,18 @@ class Usuario extends AbstractEntity
     public function setSenha($senha)
     {
         $bcrypt = new Bcrypt();
-        $this->senha = $bcrypt->create($senha . $this->getSalt());
+        $this->senha = $bcrypt->create($this->generatePassword($senha));
     }
 
-    public function veriry($senha)
+    public function verify($senha)
     {
         $bcrypt = new Bcrypt();
-        return $bcrypt->verify($senha . $this->getSalt(), $this->senha);
+        return $bcrypt->verify($this->generatePassword($senha), $this->senha);
+    }
+
+    private function generatePassword($password)
+    {
+        return $password . sha1($password . $this->getSalt());
     }
 
     public function getSalt()
