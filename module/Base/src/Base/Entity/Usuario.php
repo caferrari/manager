@@ -7,7 +7,9 @@ use Doctrine\ORM\Mapping as ORM,
     Zend\Crypt\Password\Bcrypt;
 
 /**
- * @ORM\Table(name="usuario")
+ * @ORM\Table(name="usuario",
+ *      uniqueConstraints={@ORM\UniqueConstraint(name="un_usuario_email", columns={"email"})}
+ * )
  * @ORM\Entity(repositoryClass="Base\Repository\Usuario") @ORM\HasLifecycleCallbacks
  */
 class Usuario extends AbstractEntity
