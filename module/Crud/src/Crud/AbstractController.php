@@ -26,7 +26,8 @@ abstract class AbstractController extends AbstractActionController
         'error' => array(
             'insert' => 'Não foi possível inserir',
             'edit' => 'Falha ao editar',
-            'delete' => 'Este item não pode ser excluído'
+            'delete' => 'Este item não pode ser excluído',
+            'unique' => 'Este item já existe'
         )
     );
 
@@ -58,9 +59,16 @@ abstract class AbstractController extends AbstractActionController
         if ($request->isPost()) {
             $form->setData($request->getPost());
             if ($form->isValid()) {
-                $this->getRepository()->insert($form->getData());
-                $this->success($this->getMessage('insert', 'success'));
-                $this->redirect()->toRoute('crud', array('controller' => $this->controller));
+                try {
+                    $this->getRepository()->insert($form->getData());
+                    $this->success($this->getMessage('insert', 'success'));
+                    $this->redirect()->toRoute('crud', array('controller' => $this->controller));
+                } catch(\Doctrine\DBAL\DBALException $e) {
+                    $pdoe = $e->getPrevious();
+                    if (23505 == $pdoe->getCode()) {
+                        $this->error($this->getMessage('unique', 'error'));
+                    }
+                }
             } else {
                 $this->error($this->getMessage('insert', 'error'));
             }
