@@ -33,13 +33,15 @@ return array(
             'crud' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/:controller[/:action][?id=:id]',
+                    'route' => '/:controller[/:action][?id=:id][?uf=:uf]',
                     'defaults' => array(
                         'action' => 'index',
-                        'id' => null
+                        'id' => null,
+                        'uf' => null
                     ),
                     'constraints' => array(
-                        'id' => '[0-9]+'
+                        'id' => '[0-9]+',
+                        'uf' => '[A-Z]{2}'
                     )
                 ),
             ),
@@ -53,6 +55,7 @@ return array(
             // 'cliente' => 'Clinica\Controller\Cliente',
             // 'animal' => 'Clinica\Controller\Animal',
             'usuario' => 'Base\Controller\Usuario',
+            'Cidade' => 'Base\Controller\Cidade',
         ),
     ),
     'view_manager' => array(

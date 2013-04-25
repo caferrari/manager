@@ -34,7 +34,7 @@ abstract class AbstractController extends AbstractActionController
     public function __construct()
     {
         $class = get_called_class();
-        $this->service = str_replace('\Controller\\', '\Service\\', $class);
+        $this->service = str_replace('\Controller\\', '\Repository\\', $class);
         $this->entity = str_replace('\Controller\\', '\Entity\\', $class);
         $this->form = str_replace('\Controller\\', '\Form\\', $class);
         $this->controller = trim(strtolower(preg_replace('@([A-Z])@', "-$1", explode('\\', $class)[2])), '-');
@@ -141,7 +141,7 @@ abstract class AbstractController extends AbstractActionController
         try {
             return $this->getService($this->form);
         } catch (ServiceNotFoundException $e) {
-            return new $this->form();
+            return new $this->form($this->getService('Doctrine\ORM\EntityManager'));
         }
     }
 
