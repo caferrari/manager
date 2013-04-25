@@ -8,9 +8,9 @@ return array(
                 'params' => array(
                     'host' => '127.0.0.1',
                     'port' => '5432',
-                    'user' => 'dbuser',
-                    'password' => 'dbpassword',
-                    'dbname' => 'databasename',
+                    'user' => 'postgres',
+                    'password' => 'naoprecisaparadev',
+                    'dbname' => 'manager_dev',
                     'driverOptions' => array(),
                 ),
             ),

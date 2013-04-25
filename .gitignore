@@ -9,5 +9,6 @@ nbproject
 *.local.php
 *~
 composer.lock
+composer.phar
 vendor
 !tests/vendor
