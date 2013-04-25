@@ -3,12 +3,11 @@
 namespace Base\Form;
 
 use Crud\AbstractForm;
-use Doctrine\Common\Persistence\ObjectManager;
 
 class Cidade extends AbstractForm
 {
 
-    public function __construct(ObjectManager $objectManager = null)
+    public function __construct(array $ufs)
     {
 
         parent::__construct('cidade');
@@ -35,21 +34,16 @@ class Cidade extends AbstractForm
             )
         );
 
-        $this->add(
-            array(
+        $this->add(array(
                 'name' => 'uf',
-                'type' => 'DoctrineModule\Form\Element\ObjectSelect',
+                'type' => 'Zend\Form\Element\Select',
                 'options' => array(
                     'label' => 'UF',
-                    'object_manager' => $objectManager,
-                    'target_class'   => 'Base\Entity\Cidade',
-                    'is_dql' => true,
-                    'find_method'    => array(
-                        'name'   => 'loadUF'
-                    )
+                    'value_options' => $ufs
                 )
             )
         );
+
     }
 
 }

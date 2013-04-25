@@ -136,12 +136,12 @@ abstract class AbstractController extends AbstractActionController
         return $this->getServiceLocator()->get($service);
     }
 
-    public function getForm()
+    protected function getForm()
     {
         try {
             return $this->getService($this->form);
         } catch (ServiceNotFoundException $e) {
-            return new $this->form($this->getService('Doctrine\ORM\EntityManager'));
+            return new $this->form();
         }
     }
 
