@@ -22,7 +22,8 @@ test:
 	vendor/bin/phpunit --configuration tests/phpunit.xml
 
 server:
-	php -S 127.0.0.1:8080 -t public/
+	php -S 127.0.0.1:8080 -t public/ &
+	sensible-browser http://127.0.0.1:8080
 
 setup:
 	curl -sS https://getcomposer.org/installer | php

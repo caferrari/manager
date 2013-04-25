@@ -32,7 +32,7 @@ sudo nano /etc/postgresql/9.1/main/pg_hba.conf
 Na linha que contêm o seguinte host:
 
 ```sh
-host    all             all             127.0.0.1/32            password
+host    all             all             127.0.0.1/32            md5
 ```
 
 Altere o password para trust, ficando assim:
