@@ -10,13 +10,14 @@ Este projeto possui as seguintes dependências:
 
  * Postgres >= 9.1
  * PHP >= 5.4
+ * Git
 
 ## Configurando uma maquina para desenvolvimento no Ubuntu
 
 Instale as dependências:
 
 ```sh
-sudo apt-get install postgresql php5-cli php5-curl php5-pgsql php5-intl curl
+sudo apt-get install postgresql php5-cli php5-curl php5-pgsql php5-intl curl git
 ```
 
 ### Configuração do Postgres
@@ -56,7 +57,7 @@ E a instalação está pronta
 Clone o projeto do github para sua maquina:
 
 ```sh
-git clone git@github.com:secom-tocantins/manager.git
+git clone git://github.com/secom-tocantins/manager.git
 ```
 
 Agora entramos na pasta do projeto utilizamos o make para configurar tudo
