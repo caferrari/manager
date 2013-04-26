@@ -24,6 +24,7 @@
         "zendframework/zend-session": ">2.1",
         "zendframework/zend-crypt" : ">2.1",
         "zendframework/zend-math": ">2.1",
+        "zendframework/zend-json": ">2.1",
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/doctrine-orm-module": "0.*"
     },
