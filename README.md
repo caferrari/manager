@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/secom-tocantins/manager.png?branch=master)](https://travis-ci.org/secom-tocantins/manager)
 
-Gerênciador Integrado de Orgão Público
+Gerênciador Integrado de Órgão Público
 
 ## Dependências
 
@@ -67,7 +67,7 @@ cd manager
 make setup
 ```
 
-Todo pronto. =)
+Aguarde o composer atualizar e instalar as dependências e estará tudo pronto.
 
 ### Testando o projeto
 

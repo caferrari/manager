@@ -7,7 +7,7 @@ use Crud\AbstractForm;
 class Cidade extends AbstractForm
 {
 
-    public function __construct(array $ufs)
+    public function __construct()
     {
 
         parent::__construct('cidade');
@@ -33,6 +33,8 @@ class Cidade extends AbstractForm
                 )
             )
         );
+
+        $ufs = array ('AC' => 'AC', 'AL' => 'AL', 'AM' => 'AM', 'AP' => 'AP', 'BA' => 'BA', 'CE' => 'CE', 'DF' => 'DF', 'ES' => 'ES', 'GO' => 'GO', 'MA' => 'MA', 'MG' => 'MG', 'MS' => 'MS', 'MT' => 'MT', 'PA' => 'PA', 'PB' => 'PB', 'PE' => 'PE', 'PI' => 'PI', 'PR' => 'PR', 'RJ' => 'RJ', 'RN' => 'RN', 'RO' => 'RO', 'RR' => 'RR', 'RS' => 'RS', 'SC' => 'SC', 'SE' => 'SE', 'SP' => 'SP', 'TO' => 'TO');
 
         $this->add(array(
                 'name' => 'uf',

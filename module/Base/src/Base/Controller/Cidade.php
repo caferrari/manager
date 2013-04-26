@@ -24,14 +24,4 @@ class Cidade extends AbstractController
         return array('currentUf' => $uf, 'ufs' => $ufs, 'cidades' => $cidades);
     }
 
-    protected function getForm()
-    {
-        $ufs = $this->getRepository()->loadUF();
-        $selectData = array();
-        foreach ($ufs as $uf) {
-            $selectData[$uf['uf']] = $uf['uf'];
-        }
-        return new $this->form($selectData);
-    }
-
 }
