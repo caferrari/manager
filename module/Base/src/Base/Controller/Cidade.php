@@ -2,7 +2,7 @@
 
 namespace Base\Controller;
 
-use Crud\AbstractController;
+use Common\AbstractController;
 
 class Cidade extends AbstractController
 {
@@ -18,7 +18,11 @@ class Cidade extends AbstractController
     public function indexAction()
     {
         $uf = $this->getRequest()->getQuery('uf', 'TO');
+
         $ufs = $this->getRepository()->loadUF();
+        if (!$ufs) {
+            $this->getService()->loadDatabase();
+        }
 
         $cidades = $this->getRepository()->findByUf($uf);
         return array('currentUf' => $uf, 'ufs' => $ufs, 'cidades' => $cidades);

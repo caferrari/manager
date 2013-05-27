@@ -55,7 +55,7 @@ return array(
             // 'cliente' => 'Clinica\Controller\Cliente',
             // 'animal' => 'Clinica\Controller\Animal',
             'usuario' => 'Base\Controller\Usuario',
-            'Cidade' => 'Base\Controller\Cidade',
+            'cidade' => 'Base\Controller\Cidade',
         ),
     ),
     'view_manager' => array(
@@ -76,8 +76,8 @@ return array(
     ),
     'view_helpers' => array(
         'invokables' => array(
-            'bootstrapRow' => 'Crud\Helper\BootstrapRow',
-            'FlashMessages' => 'Crud\View\Helper\FlashMessages',
+            'bootstrapRow' => 'Common\Helper\BootstrapRow',
+            'FlashMessages' => 'Common\View\Helper\FlashMessages',
         )
     )
 );

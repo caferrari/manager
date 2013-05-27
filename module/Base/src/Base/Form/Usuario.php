@@ -2,7 +2,7 @@
 
 namespace Base\Form;
 
-use Crud\AbstractForm;
+use Common\AbstractForm;
 
 class Usuario extends AbstractForm
 {
@@ -29,7 +29,8 @@ class Usuario extends AbstractForm
                     'label' => 'Nome'
                 ),
                 'attributes' => array(
-                    'placeholder' => 'Nome do Usuário'
+                    'placeholder' => 'Nome do Usuário',
+                    'class' => 'span4'
                 )
             )
         );
@@ -42,7 +43,8 @@ class Usuario extends AbstractForm
                     'label' => 'E-mail'
                 ),
                 'attributes' => array(
-                    'placeholder' => 'seuemail@dominio.com'
+                    'placeholder' => 'seuemail@dominio.com',
+                    'class' => 'span3'
                 )
             )
         );
@@ -53,7 +55,10 @@ class Usuario extends AbstractForm
                 'name' => 'senha',
                 'type' => 'password',
                 'options' => array(
-                    'label' => 'Senha'
+                    'label' => 'Senha',
+                ),
+                'attributes' => array(
+                    'class' => 'span2'
                 )
             )
         );

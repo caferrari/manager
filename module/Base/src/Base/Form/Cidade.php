@@ -2,7 +2,7 @@
 
 namespace Base\Form;
 
-use Crud\AbstractForm;
+use Common\AbstractForm;
 
 class Cidade extends AbstractForm
 {

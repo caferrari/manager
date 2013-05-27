@@ -2,7 +2,7 @@
 
 namespace Base\Controller;
 
-use Crud\AbstractController;
+use Common\AbstractController;
 
 class Usuario extends AbstractController
 {
@@ -15,8 +15,4 @@ class Usuario extends AbstractController
         $this->messages['error']['unique'] = 'Já existe um usuário utilizando este email';
     }
 
-    public function loginAction()
-    {
-
-    }
 }

@@ -3,7 +3,7 @@
 namespace Base\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
-    Crud\AbstractEntity,
+    Common\AbstractEntity,
     Zend\Crypt\Password\Bcrypt;
 
 /**

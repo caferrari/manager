@@ -2,7 +2,7 @@
 
 namespace Base\Repository;
 
-use Crud\AbstractRepository;
+use Common\AbstractRepository;
 
 class Cidade extends AbstractRepository
 {
@@ -18,38 +18,8 @@ class Cidade extends AbstractRepository
         return $qb->getQuery()->getSingleScalarResult();
     }
 
-    private function loadDatabase()
-    {
-
-        if ($this->count()) {
-            return;
-        }
-
-        set_time_limit(0);
-        $files = glob(getcwd() . '/data/assets/cidades/*.json');
-        $em = $this->getEntityManager();
-
-        $em->getConnection()->beginTransaction();
-        foreach ($files as $file) {
-            $dados = json_decode(file_get_contents($file));
-            foreach ($dados->cidades as $cidade) {
-                $data = array(
-                    'nome' => $cidade->nome,
-                    'uf' => $dados->sigla,
-                    'capital' => $cidade->nome == $dados->capital
-                );
-                $entity = $this->createEntity($data);
-                $em = $this->getEntityManager();
-                $em->persist($entity);
-            }
-            $em->flush();
-        }
-        $em->getConnection()->commit();
-    }
-
     public function loadUF()
     {
-        $this->loadDatabase();
         $query = $this->getEntityManager()->createQuery('SELECT c.uf FROM Base\\Entity\\Cidade c GROUP BY c.uf ORDER BY c.uf');
         return $query->getResult();
     }

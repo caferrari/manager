@@ -25,6 +25,8 @@
         "zendframework/zend-crypt" : ">2.1",
         "zendframework/zend-math": ">2.1",
         "zendframework/zend-json": ">2.1",
+        "zendframework/zend-serializer": ">2.1",
+        "zendframework/zend-i18n": ">2.1",
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/doctrine-orm-module": "0.*"
     },

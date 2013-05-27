@@ -4,7 +4,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'Base',
-        'Crud'
+        'Common'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(

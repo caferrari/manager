@@ -34,7 +34,16 @@ class Module
     public function getServiceConfig()
     {
         return array(
-            'factories' => array(),
+            'factories' => array(
+
+                'base.usuario' => function ($sm) {
+                    return new Service\Usuario($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'base.cidade' => function ($sm) {
+                    return new Service\Cidade($sm->get('Doctrine\ORM\EntityManager'));
+                }
+
+            ),
         );
     }
 
@@ -47,7 +56,7 @@ class Module
                                          ->get('ControllerPluginManager')
                                          ->get('flashmessenger');
 
-                    $message = new \Crud\Helper\FlashMessages;
+                    $message = new \Common\Helper\FlashMessages;
                     $message->setFlashMessager($flashmessenger);
                     return $message ;
                 }
