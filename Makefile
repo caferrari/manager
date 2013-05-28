@@ -30,5 +30,8 @@ setup:
 	php composer.phar install --dev --prefer-dist
 	-psql -h 127.0.0.1 -c 'create database manager_test;' -U postgres
 	-psql -h 127.0.0.1 -c 'create database manager_dev;' -U postgres
-	cp config/autoload/doctrine_orm.local.php.dist  config/autoload/doctrine_orm.local.php
+	cp config/autoload/doctrine_orm.local.php.dist config/autoload/doctrine_orm.local.php
+	mkdir -p manager/data/DoctrineORMModule/Proxy
+	chmod 777 manager/data/DoctrineORMModule/Proxy
 	php vendor/bin/doctrine-module orm:schema-tool:create
+	php vendor/bin/doctrine-module data-fixture:import

@@ -14,8 +14,11 @@ return array(
                 'drivers' => array(
                     __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
                 ),
-            ),
-        ),
+            )
+        )
+    ),
+    'data-fixture' => array(
+        'Base_fixture' => __DIR__ . '/../src/Base/Fixture',
     ),
     'router' => array(
         'routes' => array(

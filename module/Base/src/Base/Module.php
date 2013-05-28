@@ -7,6 +7,7 @@ use Zend\Mvc\ModuleRouteListener,
 
 class Module
 {
+
     public function onBootstrap(MvcEvent $e)
     {
         //$e->getApplication()->getServiceManager()->get('translator');
@@ -35,14 +36,12 @@ class Module
     {
         return array(
             'factories' => array(
-
                 'base.usuario' => function ($sm) {
                     return new Service\Usuario($sm->get('Doctrine\ORM\EntityManager'));
                 },
                 'base.cidade' => function ($sm) {
                     return new Service\Cidade($sm->get('Doctrine\ORM\EntityManager'));
                 }
-
             ),
         );
     }
@@ -51,10 +50,10 @@ class Module
     {
         return array(
             'factories' => array(
-                'flashMessage' => function($sm) {
+                'flashMessage' => function ($sm) {
                     $flashmessenger = $sm->getServiceLocator()
-                                         ->get('ControllerPluginManager')
-                                         ->get('flashmessenger');
+                        ->get('ControllerPluginManager')
+                        ->get('flashmessenger');
 
                     $message = new \Common\Helper\FlashMessages;
                     $message->setFlashMessager($flashmessenger);
