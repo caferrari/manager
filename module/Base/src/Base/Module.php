@@ -3,7 +3,12 @@
 namespace Base;
 
 use Zend\Mvc\ModuleRouteListener,
-    Zend\Mvc\MvcEvent;
+    Zend\Mvc\MvcEvent,
+    Zend\ModuleManager\ModuleManager,
+    Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Storage\Session as SessionStorage;;
+
+use Base\Auth\Adapter as AuthAdapter;
 
 class Module
 {
@@ -14,6 +19,33 @@ class Module
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
+    }
+
+    public function init(ModuleManager $moduleManager)
+    {
+
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
+
+        $sharedEvents->attach(
+            'Zend\Mvc\Controller\AbstractActionController',
+            MvcEvent::EVENT_DISPATCH,
+            function ($e) {
+                $route = $e->getRouteMatch()->getMatchedRouteName();
+                if (in_array($route, explode(', ', 'login, logout'))) {
+                    return;
+                }
+
+                $auth = new AuthenticationService(
+                    new SessionStorage('manager_' . md5(getcwd()))
+                );
+
+                if (!$auth->hasIdentity()) {
+                    return $e->getTarget()->redirect()->toRoute('login');
+                }
+            },
+            100
+        );
+
     }
 
     public function getConfig()
@@ -41,6 +73,9 @@ class Module
                 },
                 'base.cidade' => function ($sm) {
                     return new Service\Cidade($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'base.authadapter' => function ($sm) {
+                    return new AuthAdapter($sm->get('Doctrine\ORM\EntityManager'));
                 }
             ),
         );

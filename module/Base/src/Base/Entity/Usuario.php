@@ -76,7 +76,7 @@ class Usuario extends AbstractEntity
         return $bcrypt->verify($this->generatePassword($senha), $this->senha);
     }
 
-    private function generatePassword($password)
+    public function generatePassword($password)
     {
         return $password . sha1($password . $this->getSalt());
     }

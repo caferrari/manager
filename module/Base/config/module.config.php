@@ -48,15 +48,31 @@ return array(
                     )
                 ),
             ),
+            'login' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/login',
+                    'defaults' => array(
+                        'controller' => 'usuario',
+                        'action'     => 'login',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/logout',
+                    'defaults' => array(
+                        'controller' => 'usuario',
+                        'action'     => 'logout',
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             'Base\Controller\Index' => 'Base\Controller\Index',
-            // 'especie' => 'Clinica\Controller\Especie',
-            // 'raca' => 'Clinica\Controller\Raca',
-            // 'cliente' => 'Clinica\Controller\Cliente',
-            // 'animal' => 'Clinica\Controller\Animal',
             'usuario' => 'Base\Controller\Usuario',
             'cidade' => 'Base\Controller\Cidade',
         ),
