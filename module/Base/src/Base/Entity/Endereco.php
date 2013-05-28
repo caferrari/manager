@@ -21,7 +21,7 @@ class Endereco extends AbstractEntity
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Base\Entity\Cidade", inversedBy="cidade")
+     * @ORM\ManyToOne(targetEntity="Base\Entity\Cidade")
      */
     protected $cidade;
 

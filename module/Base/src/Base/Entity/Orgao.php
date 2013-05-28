@@ -21,7 +21,7 @@ class Orgao extends AbstractEntity
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Base\Entity\Endereco", inversedBy="endereco")
+     * @ORM\OneToOne(targetEntity="Base\Entity\Endereco")
      */
     protected $endereco;
 
