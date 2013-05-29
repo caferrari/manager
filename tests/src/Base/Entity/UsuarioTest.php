@@ -7,12 +7,6 @@ use Test\ModelTestCase;
 class UsuarioTest extends ModelTestCase
 {
 
-    public function testSeClasseUsuarioExiste()
-    {
-        $this->assertTrue(class_exists('Base\Entity\Usuario'));
-        $this->assertInstanceOf('Base\Entity\Usuario', new Usuario);
-    }
-
     /**
      * @dataProvider providerForValidUsuarios
      */
@@ -27,32 +21,25 @@ class UsuarioTest extends ModelTestCase
      */
     public function testSeEncriptaSenhaCorretamente($data)
     {
-
         $usuario = new Usuario($data);
         $usuario->validate();
 
         $this->assertStringStartsWith('$2y$', $usuario->senha);
         $this->assertTrue($usuario->verify($data['senha']));
-
     }
 
     /**
      * @dataProvider providerForInvalidUsuarios
      */
     public function testSeDaExecptionAoInserirUsuarioInvalido($data, $message) {
-        $em = $this->getEm();
-
         try {
             $usuario = new Usuario($data);
             $usuario->validate();
+            $this->fail('Usuário foi inserido mesmo inválido, deveria dar exception: ' . $message);
         } catch (\Exception $e) {
             $this->assertInstanceOf('RuntimeException', $e);
             $this->assertEquals($message, $e->getMessage());
-            return;
         }
-
-        $this->fail('Usuário foi inserido mesmo inválido, deveria dar exception: ' . $message);
-
     }
 
     public function providerForInvalidUsuarios()
