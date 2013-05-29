@@ -11,4 +11,5 @@ nbproject
 composer.lock
 composer.phar
 vendor
+coverage
 !tests/vendor
