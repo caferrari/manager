@@ -25,6 +25,7 @@ class AbstractService
     public function update(array $data)
     {
         $entity = $this->getReference($data['id']);
+
         $entity->setData($data);
 
         $this->em->persist($entity);

@@ -29,4 +29,22 @@ class ModelTestCase extends AbstractTestCase
         }
         return $this->em = $this->application->getServiceManager()->get($this->service);
     }
+
+    public function getEmMock()
+    {
+        $emMock = $this->getMock(
+            '\Doctrine\ORM\EntityManager',
+            array('getRepository', 'getClassMetadata', 'persist', 'flush'), array(), '', false
+        );
+
+        $emMock->expects($this->any())
+            ->method('persist')
+            ->will($this->returnValue(null));
+
+        $emMock->expects($this->any())
+            ->method('flush')
+            ->will($this->returnValue(null));
+
+        return $emMock;
+    }
 }

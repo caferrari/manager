@@ -47,11 +47,11 @@ class Usuario extends AbstractEntity
      */
     protected $salt;
 
-    /** @ORM\PreFlush */
+    /** @ORM\PrePersist */
     public function validate()
     {
         parent::validate();
-        if ($this->id || $this->senha) {
+        if (($this->id || $this->senha)) {
             $bcrypt = new Bcrypt();
             $this->senha = $bcrypt->create($this->generatePassword($this->senha));
         }

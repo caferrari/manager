@@ -9,7 +9,7 @@ use Zend\Mvc\Router\RouteMatch;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\View\Resolver;
 
-abstract class ControllerTestCase extends TestCase
+abstract class AbstractControllerTestCase extends TestCase
 {
     /**
      * The ActionController we are testing

@@ -12,10 +12,10 @@ class Usuario extends AbstractService
 
         $entity = $this->getReference($data['id']);
 
-        if ('' === $data['senha']) {
-            unset($data['senha']);
-        } else {
+        if (!empty($data['senha'])) {
             $entity->regenerateSalt();
+        } else {
+            unset($data['senha']);
         }
 
         $entity->setData($data);
