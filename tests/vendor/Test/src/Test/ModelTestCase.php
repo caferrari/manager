@@ -39,7 +39,16 @@ class ModelTestCase extends AbstractTestCase
 
         $emMock->expects($this->any())
             ->method('persist')
-            ->will($this->returnValue(null));
+            ->will(
+                $this->returnCallback(
+                    function ($entity) {
+                        if (method_exists($entity, 'prePersist')) {
+                            $entity->prePersist();
+                        }
+                        return $entity;
+                    }
+                )
+            );
 
         $emMock->expects($this->any())
             ->method('flush')
