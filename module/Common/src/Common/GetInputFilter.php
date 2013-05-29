@@ -35,6 +35,8 @@ trait GetInputFilter
         if (!$this->isValid()) {
             throw new \RunTimeException($this->getExceptionMessage());
         }
+
+        return true;
     }
 
     private function getExceptionMessage()
