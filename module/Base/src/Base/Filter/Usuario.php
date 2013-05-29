@@ -37,7 +37,7 @@ class Usuario extends InputFilter
                     array(
                         'name' => 'NotEmpty',
                         'options' => array(
-                            'messages' => array('isEmpty' => 'Digite um nome!')
+                            'messages' => array('isEmpty' => 'Nome não deve estar em branco')
                         )
                     )
                 )
@@ -56,19 +56,19 @@ class Usuario extends InputFilter
                     array(
                         'name' => 'NotEmpty',
                         'options' => array(
-                            'messages' => array('isEmpty' => 'e-Mail é obrigatório!')
+                            'messages' => array('isEmpty' => 'e-mail é obrigatório!')
                         )
                     ),
                     array(
                         'name' => 'EmailAddress',
                         'options' => array(
-                            'messages' => array('emailAddressInvalidFormat' => 'Digite um email válido!')
+                            'messages' => array('emailAddressInvalidFormat' => 'e-mail inválido')
                         )
                     ),
                     array(
                         'name' => 'StringLength',
                         'options' => array(
-                            'messages' => array('stringLengthTooLong' => 'Deve ter no maximo %max% caracteres'),
+                            'messages' => array('stringLengthTooLong' => 'E-mail deve ter no máximo %max% caracteres'),
                             'max' => 100
                         )
                     )
@@ -88,7 +88,7 @@ class Usuario extends InputFilter
                     array(
                         'name' => 'StringLength',
                         'options' => array(
-                            'messages' => array('stringLengthTooShort' => 'Deve ter no mínimo %min% caracteres'),
+                            'messages' => array('stringLengthTooShort' => 'Senha deve ter no mínimo %min% caracteres'),
                             'min' => 8
                         )
                     )
@@ -106,11 +106,21 @@ class Usuario extends InputFilter
                 ),
                 'validators' => array(
                     array(
+                        'name' => 'NotEmpty',
+                        'options' => array(
+                            'messages' => array('isEmpty' => 'Tipo não deve estar em branco')
+                        )
+                    ),
+                    array(
                         'name' => 'StringLength',
                         'options' => array(
-                            'messages' => array('stringLengthTooShort' => 'Deve ter no mínimo %min% caracteres', 'stringLengthTooLong' => 'Deve ter no maximo %max% caracteres'),
+                            'messages' => array(
+                                'stringLengthTooShort' => 'Tipo deve ter no mínimo %min% caractere',
+                                'stringLengthTooLong' => 'Tipo deve ter no máximo %max% caractere',
+
+                            ),
                             'min' => 1,
-                            'max' => 8
+                            'max' => 1
                         )
                     )
                 )

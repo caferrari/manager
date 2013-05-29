@@ -11,30 +11,33 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
     /**
      * @var Zend\ServiceManager\ServiceManager
      */
-    protected $serviceManager;
+    protected static $serviceManager;
 
-    public function setup()
+    public static function setUpBeforeClass()
     {
-        parent::setup();
+        shell_exec(getcwd() . '/tests/vendor/bin/doctrine-module orm:schema-tool:drop --force');
+        shell_exec(getcwd() . '/tests/vendor/bin/doctrine-module orm:schema-tool:create');
 
         $pathDir = getcwd()."/";
+
         $config = include $pathDir.'config/test.config.php';
 
-        $this->serviceManager = new ServiceManager(
+        self::$serviceManager = new ServiceManager(
             new ServiceManagerConfig(
                 isset($config['service_manager']) ? $config['service_manager'] : array()
             )
         );
-        $this->serviceManager->setService('ApplicationConfig', $config);
-        $this->serviceManager->setFactory('ServiceListener', 'Zend\Mvc\Service\ServiceListenerFactory');
+        self::$serviceManager->setService('ApplicationConfig', $config);
+        self::$serviceManager->setFactory('ServiceListener', 'Zend\Mvc\Service\ServiceListenerFactory');
 
-        $moduleManager = $this->serviceManager->get('ModuleManager');
+        $moduleManager = self::$serviceManager->get('ModuleManager');
         $moduleManager->loadModules();
+    }
 
-        $this->application = $this->serviceManager->get('Application');
-
-        shell_exec($pathDir . 'tests/vendor/bin/doctrine-module orm:schema-tool:drop --force');
-        shell_exec($pathDir . 'tests/vendor/bin/doctrine-module orm:schema-tool:create');
+    public function setup()
+    {
+        parent::setup();
+        $this->application = self::$serviceManager->get('Application');
     }
 
     public function tearDown()

@@ -30,9 +30,24 @@ trait GetInputFilter
         return implode('\\', $classParts);
     }
 
-    public function __toString()
+    public function validate()
     {
-        return json_encode($this->toArray());
+        if (!$this->isValid()) {
+            throw new \RunTimeException($this->getExceptionMessage());
+        }
+    }
+
+    private function getExceptionMessage()
+    {
+        $errors  = $this->getInputFilter()->getMessages();
+        $messages = array();
+
+        foreach ($errors as $error) {
+            $messages[] = array_shift($error);
+        }
+
+        return implode('; ', $messages);
+
     }
 
 }

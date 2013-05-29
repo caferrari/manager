@@ -48,26 +48,15 @@ class Usuario extends AbstractEntity
     protected $salt;
 
     /** @ORM\PreFlush */
-    public function validate($event)
+    public function validate()
     {
-        if (!$this->isValid()) {
-            throw new \RunTimeException('Dados inválidos');
+        parent::validate();
+        if ($this->id || $this->senha) {
+            $bcrypt = new Bcrypt();
+            $this->senha = $bcrypt->create($this->generatePassword($this->senha));
         }
-    }
 
-    public function __set($var, $value)
-    {
-        if ($var == 'senha') {
-            $this->setSenha($value);
-            return $value;
-        }
-        parent::__set($var, $value);
-    }
-
-    public function setSenha($senha)
-    {
-        $bcrypt = new Bcrypt();
-        $this->senha = $bcrypt->create($this->generatePassword($senha));
+        return true;
     }
 
     public function verify($senha)

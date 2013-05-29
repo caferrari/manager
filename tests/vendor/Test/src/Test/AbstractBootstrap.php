@@ -17,6 +17,9 @@ abstract class AbstractBootstrap
 
     public static function init()
     {
+
+        ob_end_clean();
+
         $root = realpath(__DIR__ . '/../../../../../');
 
         // Load the user-defined test configuration file, if it exists; otherwise, load
@@ -58,7 +61,7 @@ abstract class AbstractBootstrap
         static::$serviceManager = $serviceManager;
         static::$config = $config;
 
-        ob_end_clean();
+
     }
 
     public static function getServiceManager()

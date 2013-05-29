@@ -2,9 +2,6 @@
 
 namespace Common;
 
-use Zend\InputFilter\InputFilter,
-    \RuntimeException;
-
 abstract class AbstractEntity
 {
 
@@ -20,7 +17,12 @@ abstract class AbstractEntity
 
     public function __set($key, $value)
     {
-        $this->$key = $value; //$this->valid($key, $value);
+        $setMethod = 'set' . ucfirst($key);
+        if (method_exists($this, $setMethod)) {
+            $this->$setMethod($value);
+        } else {
+            $this->$key = $value;
+        }
     }
 
     public function __get($key)
