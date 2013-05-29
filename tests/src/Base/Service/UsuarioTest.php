@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Base\Service;
 
 use Test\ModelTestCase,
@@ -9,10 +8,8 @@ use Test\ModelTestCase,
 class UsuarioTest extends ModelTestCase
 {
 
-
     public function testSeInsereUsuario()
     {
-
         $em = $this->getEm();
 
         $service = new Usuario($em);
@@ -29,11 +26,8 @@ class UsuarioTest extends ModelTestCase
 
     public function testSeAtualizaDadosDoUsuarioSemAlterarSenha()
     {
-
         $em = $this->getEm();
-
         $service = new Usuario($em);
-
         $senhaAntiga = $em->getRepository('Base\Entity\Usuario')->findOneById(1)->senha;
 
         $data = array(
@@ -53,9 +47,7 @@ class UsuarioTest extends ModelTestCase
 
     public function testSeAtualizaDadosDoUsuarioAlterandoASenha()
     {
-
         $em = $this->getEm();
-
         $service = new Usuario($em);
 
         $senhaAntiga = $em->getRepository('Base\Entity\Usuario')->findOneById(1)->senha;
@@ -77,17 +69,13 @@ class UsuarioTest extends ModelTestCase
 
     public function testSeDeletaUsuario()
     {
-
         $em = $this->getEm();
-
         $service = new Usuario($em);
 
         $entity = $service->delete(1);
-
         $this->assertInstanceOf('\Base\Entity\Usuario', $entity);
 
         $entity = $em->getRepository('Base\Entity\Usuario')->findOneById(1);
-
         $this->assertNull($entity);
 
     }
@@ -98,16 +86,16 @@ class UsuarioTest extends ModelTestCase
     public function testSeInsereUsuarioInvalido()
     {
         $em = $this->getEm();
-
         $service = new Usuario($em);
+
         $data = array(
             'nome' => 'Administrador',
             'email' => 'bla',
             'senha' => '12345678',
             'tipo' => 'a'
         );
-        $entity = $service->insert($data);
 
+        $entity = $service->insert($data);
         $this->assertInstanceOf('\Base\Entity\Usuario', $entity);
     }
 

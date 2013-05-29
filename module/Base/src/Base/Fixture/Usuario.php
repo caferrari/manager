@@ -12,7 +12,6 @@ class Usuario extends AbstractFixture
     public function load(ObjectManager $manager)
     {
 
-
         $data = array(
             'nome' => 'Administrador',
             'email' => 'admin@to.gov.br',
@@ -23,7 +22,6 @@ class Usuario extends AbstractFixture
 
         $manager->persist($entity);
         $manager->flush();
-
 
     }
 
