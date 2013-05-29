@@ -19,6 +19,9 @@
     <filter>
         <whitelist>
             <directory>../module/Base/src/</directory>
+            <exclude>
+                <directory>../module/Base/src/Base/Fixture</directory>
+            </exclude>
         </whitelist>
     </filter>
 
