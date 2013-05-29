@@ -19,7 +19,7 @@ help-default help:
 	@echo ""
 
 test:
-	vendor/bin/phpunit --configuration tests/phpunit.xml
+	vendor/bin/phpunit --configuration tests/phpunit.xml  --coverage-text
 
 server:
 	php -S 127.0.0.1:8080 -t public/ &
