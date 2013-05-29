@@ -81,8 +81,7 @@ class Usuario extends InputFilter
                 'name' => 'senha',
                 'required' => false,
                 'filters' => array(
-                    array('name' => 'StripTags'),
-                    array('name' => 'StringTrim')
+
                 ),
                 'validators' => array(
                     array(
