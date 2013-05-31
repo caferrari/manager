@@ -3,8 +3,9 @@ return array(
     'modules' => array(
         'DoctrineModule',
         'DoctrineORMModule',
+        'Common',
         'Base',
-        'Common'
+        'Acl'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
