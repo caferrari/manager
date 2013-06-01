@@ -19,8 +19,10 @@
     <filter>
         <whitelist>
             <directory>../module/Base/src/</directory>
+            <directory>../module/Acl/src/</directory>
             <exclude>
                 <directory>../module/Base/src/Base/Fixture</directory>
+                <directory>../module/Acl/src/Acl/Fixture</directory>
             </exclude>
         </whitelist>
     </filter>
