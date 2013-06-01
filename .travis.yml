@@ -12,6 +12,9 @@ before_script:
   - psql -h 127.0.0.1 -c 'create database manager_test;' -U postgres
   - mkdir data/DoctrineORMModule/Proxy -p
   - phpenv rehash
-  - composer install --dev --prefer-source
+  - composer install --dev --prefer-dist
 
-script: vendor/bin/phpunit --configuration tests/phpunit.xml  --coverage-text
+script: vendor/bin/phpunit --configuration tests/phpunit.xml  --coverage-text --coverage-clover ./build/logs/clover.xml
+
+after_script:
+  - vendor/bin/coveralls -v
