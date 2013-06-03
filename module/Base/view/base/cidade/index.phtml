@@ -5,8 +5,8 @@
 <div class="pagination pagination-small">
     <ul>
         <?php foreach ($ufs as $uf): ?>
-        <li<?= ($currentUf == $uf['uf']) ? ' class="active"' : ''; ?>>
-            <a href="<?php echo $this->url('crud', array('controller' => 'cidade')) ?>?uf=<?= $uf['uf'] ?>"><?= $uf['uf'] ?></a>
+        <li<?= ($currentUf == $uf) ? ' class="active"' : ''; ?>>
+            <a href="<?php echo $this->url('crud', array('controller' => 'cidade')) ?>?uf=<?= $uf ?>"><?= $uf ?></a>
         </li>
         <?php endforeach; ?>
     </ul>

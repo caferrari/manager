@@ -37,7 +37,7 @@ class Cidade extends InputFilter
                     array(
                         'name' => 'NotEmpty',
                         'options' => array(
-                            'messages' => array('isEmpty' => 'Digite um nome!')
+                            'messages' => array('isEmpty' => 'Digite um nome para a cidade')
                         )
                     )
                 )
@@ -56,9 +56,25 @@ class Cidade extends InputFilter
                     array(
                         'name' => 'StringLength',
                         'options' => array(
-                            'messages' => array('stringLengthTooShort' => 'Deve ter no mínimo %min% caracteres', 'stringLengthTooLong' => 'Deve ter no maximo %max% caracteres'),
+                            'messages' => array(
+                                'stringLengthTooShort' => 'UF Deve ter no mínimo %min% caracteres',
+                                'stringLengthTooLong' => 'UF Deve ter no máximo %max% caracteres',
+                            ),
                             'min' => 2,
                             'max' => 2
+                        )
+                    ),
+                    array(
+                        'name' => 'NotEmpty',
+                        'options' => array(
+                            'messages' => array('isEmpty' => 'Selecione uma UF')
+                        )
+                    ),
+                    array(
+                        'name' => 'inArray',
+                        'options' => array(
+                            'haystack' => array('AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'),
+                            'messages' => array('notInArray' => 'UF não existe')
                         )
                     )
                 )
