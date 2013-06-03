@@ -81,6 +81,23 @@ class Cidade extends InputFilter
             )
         );
 
+        $this->add(
+            array(
+                'name' => 'capital',
+                'required' => false,
+                'validators' => array(
+                    array(
+                        'name' => 'inArray',
+                        'options' => array(
+                            'haystack' => array(true, false),
+                            'messages' => array('notInArray' => 'Capital deve ser verdadeiro ou falso')
+                        )
+                    )
+                )
+
+            )
+        );
+
     }
 
 }

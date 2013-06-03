@@ -38,6 +38,7 @@ class CidadeTest extends ModelTestCase
                 array(
                     'nome' => '',
                     'uf' => '',
+                    'capital' => true
                 ),
                 'Digite um nome para a cidade; UF Deve ter no mínimo 2 caracteres'
             ),
@@ -46,6 +47,7 @@ class CidadeTest extends ModelTestCase
                 array(
                     'nome' => 'Bla',
                     'uf' => '',
+                    'capital' => true
                 ),
                 'UF Deve ter no mínimo 2 caracteres'
             ),
@@ -53,6 +55,7 @@ class CidadeTest extends ModelTestCase
                 array(
                     'nome' => '',
                     'uf' => 'SP',
+                    'capital' => false
                 ),
                 'Digite um nome para a cidade'
             ),
@@ -60,6 +63,7 @@ class CidadeTest extends ModelTestCase
                 array(
                     'nome' => 'Campinas',
                     'uf' => 'SPX',
+                    'capital' => true
                 ),
                 'UF Deve ter no máximo 2 caracteres'
             ),
@@ -67,6 +71,7 @@ class CidadeTest extends ModelTestCase
                 array(
                     'nome' => 'BlaBla',
                     'uf' => 'XX',
+                    'capital' => false
                 ),
                 'UF não existe'
             )
@@ -80,13 +85,15 @@ class CidadeTest extends ModelTestCase
             array(
                 array(
                     'nome' => 'São Paulo',
-                    'uf' => 'SP'
+                    'uf' => 'SP',
+                    'capital' => true
                 )
             ),
             array(
                 array(
                     'nome' => 'Araguacema',
-                    'uf' => 'TO'
+                    'uf' => 'TO',
+                    'capital' => true
                 )
             )
         );
