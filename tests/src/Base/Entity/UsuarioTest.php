@@ -31,7 +31,8 @@ class UsuarioTest extends ModelTestCase
     /**
      * @dataProvider providerForInvalidUsuarios
      */
-    public function testSeDaExecptionAoInserirUsuarioInvalido($data, $message) {
+    public function testSeDaExecptionAoInserirUsuarioInvalido($data, $message)
+    {
         try {
             $usuario = new Usuario($data);
             $usuario->validate();

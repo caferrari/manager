@@ -19,13 +19,16 @@ class Cidade extends AbstractController
     {
         $uf = $this->getRequest()->getQuery('uf', 'TO');
 
-        $ufs = $this->getRepository()->loadUF();
-        if (!$ufs) {
-            $this->getService()->loadDatabase();
-        }
+        $ufs = $this->getService()->getUFs();
 
         $cidades = $this->getRepository()->findByUf($uf);
         return array('currentUf' => $uf, 'ufs' => $ufs, 'cidades' => $cidades);
+    }
+
+    protected function getForm()
+    {
+        $ufs = $this->getService()->getUFs();
+        return new $this->form($ufs);
     }
 
 }

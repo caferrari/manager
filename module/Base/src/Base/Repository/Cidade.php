@@ -7,32 +7,21 @@ use Common\AbstractRepository;
 class Cidade extends AbstractRepository
 {
 
-    protected $listQuery = 'SELECT e FROM Base\\Entity\\Cidade e ORDER BY e.uf, e.nome';
-
     public function count()
     {
-        $qb = $this->getEntityManager()->createQueryBuilder();
-        $qb->select('count(c.id)');
-        $qb->from('Base\\Entity\\Cidade', 'c');
-
-        return $qb->getQuery()->getSingleScalarResult();
-    }
-
-    public function loadUF()
-    {
-        $query = $this->getEntityManager()->createQuery('SELECT c.uf FROM Base\\Entity\\Cidade c GROUP BY c.uf ORDER BY c.uf');
-        return $query->getResult();
+        $dql = 'SELECT count(c.id) FROM Base\\Entity\\Cidade c';
+        $query = $this->getEntityManager()->createQuery($dql);
+        return $query->getSingleScalarResult();
     }
 
     public function findByUf($uf)
     {
-        $qb = $this->getEntityManager()->createQueryBuilder();
-        $qb->select('c.id, c.nome, c.uf, c.capital');
-        $qb->from('Base\\Entity\\Cidade', 'c');
-        $qb->where('c.uf = ?1');
-        $qb->setParameter(1, $uf);
-        $qb->orderBy('c.capital desc, c.nome');
-        return $qb->getQuery()->getResult();
+        $dql = 'SELECT c.id, c.nome, c.uf, c.capital FROM Base\\Entity\\Cidade c WHERE c.uf = ?1 ORDER BY c.capital desc, c.nome';
+
+        $query = $this->getEntityManager()->createQuery($dql);
+        $query->setParameter(1, $uf);
+
+        return $query->getResult();
     }
 
 }
