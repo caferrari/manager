@@ -3,9 +3,7 @@
 $form->prepare();
 ?>
 
-<?php if ($this->error): ?>
-<p>Seu noob, loga direito</p>
-<?php endif; ?>
+<?= $this->flashMessage(); ?>
 
 <?= $this->form()->openTag($form); ?>
 

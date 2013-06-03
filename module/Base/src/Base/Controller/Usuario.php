@@ -41,9 +41,11 @@ class Usuario extends AbstractController
                 return $this->redirect()->toRoute('home');
             }
 
+            $this->error('Usuário ou senha incorretos!');
+
         }
 
-        return array('form' => $form, 'error' => $request->isPost());
+        return array('form' => $form);
     }
 
     public function logoutAction()

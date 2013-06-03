@@ -18,85 +18,12 @@ return array(
         )
     ),
     'data-fixture' => array(
-        'Base_fixture' => __DIR__ . '/../src/Base/Fixture',
-    ),
-    'router' => array(
-        'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Base\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'crud' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route' => '/:controller[/:action][?id=:id][?uf=:uf]',
-                    'defaults' => array(
-                        'action' => 'index',
-                        'id' => null,
-                        'uf' => null
-                    ),
-                    'constraints' => array(
-                        'id' => '[0-9]+',
-                        'uf' => '[A-Z]{2}'
-                    )
-                ),
-            ),
-            'login' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/login',
-                    'defaults' => array(
-                        'controller' => 'usuario',
-                        'action'     => 'login',
-                    ),
-                ),
-            ),
-            'logout' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/logout',
-                    'defaults' => array(
-                        'controller' => 'usuario',
-                        'action'     => 'logout',
-                    ),
-                ),
-            ),
-        ),
+        'Base_fixture' => __DIR__ . '/../src/' . __NAMESPACE__ . '/Fixture',
     ),
     'controllers' => array(
         'invokables' => array(
-            'Base\Controller\Index' => 'Base\Controller\Index',
             'usuario' => 'Base\Controller\Usuario',
             'cidade' => 'Base\Controller\Cidade',
         ),
-    ),
-    'view_manager' => array(
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
-        'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
-        ),
-        'template_path_stack' => array(
-            __DIR__ . '/../view',
-        ),
-    ),
-    'view_helpers' => array(
-        'invokables' => array(
-            'bootstrapRow' => 'Common\Helper\BootstrapRow',
-            'FlashMessages' => 'Common\View\Helper\FlashMessages',
-        )
     )
 );
