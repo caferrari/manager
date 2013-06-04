@@ -8,9 +8,15 @@ abstract class AbstractRepository extends EntityRepository
 {
 
     protected $pairColumn = 'nome';
+    protected $listQuery = false;
 
     public function findAll()
     {
+
+        if (!$this->listQuery) {
+            return parent::findAll();
+        }
+
         $query = $this->getEntityManager()->createQuery($this->listQuery);
         return $query->getResult();
     }

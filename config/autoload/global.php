@@ -78,7 +78,7 @@ return array(
             'error/index'             => getcwd() . '/module/Base/view/error/index.phtml',
         ),
         'template_path_stack' => array(
-            getcwd() . '/module/Base/view',
+            getcwd() . '/module/Base/view'
         ),
     ),
     'view_helpers' => array(

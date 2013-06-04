@@ -12,6 +12,8 @@ class Role extends AbstractService
 
         if (isset($data['parent']) && $data['parent']) {
             $data['parent'] = $this->em->getReference($this->getEntityName(), $data['parent']);
+        } else {
+            unset($data['parent']);
         }
 
         $entity = $this->createEntity($data);

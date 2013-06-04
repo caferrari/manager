@@ -50,9 +50,9 @@ class RoleTest extends ModelTestCase
             'parent' => $parent
         );
 
-         $role = new Role($data);
+        $role = new Role($data);
 
-         $role->validate();
+        $role->validate();
 
     }
 

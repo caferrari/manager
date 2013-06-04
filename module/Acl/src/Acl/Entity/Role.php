@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM,
 
 /**
  * @ORM\Table(name="role")
- * @ORM\Entity(repositoryClass="Alc\Repository\Role")
+ * @ORM\Entity(repositoryClass="Acl\Repository\Role")
  * @ORM\HasLifecycleCallbacks
  */
 class Role extends AbstractEntity

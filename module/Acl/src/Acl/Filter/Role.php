@@ -27,6 +27,25 @@ class Role extends InputFilter
 
         $this->add(
             array(
+                'name' => 'name',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim')
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'NotEmpty',
+                        'options' => array(
+                            'messages' => array('isEmpty' => 'Nome não deve estar em branco')
+                        )
+                    )
+                )
+            )
+        );
+
+        $this->add(
+            array(
                 'name' => 'isAdmin',
                 'required' => true,
                 'validators' => array(

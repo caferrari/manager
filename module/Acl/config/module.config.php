@@ -20,6 +20,11 @@ return array(
     'data-fixture' => array(
         'Acl_fixture' => __DIR__ . '/../src/Acl/Fixture',
     ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            getcwd() . '/module/Acl/view'
+        )
+    ),
     'controllers' => array(
         'invokables' => array(
             'role' => 'Acl\Controller\Role'

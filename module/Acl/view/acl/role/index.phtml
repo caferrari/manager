@@ -1,0 +1,31 @@
+<h2>Roles</h2>
+
+<?php echo $this->flashMessage(); ?>
+
+<div class="btn-toolbar">
+    <a href="<?php echo $this->url('crud', array('controller' => 'role', 'action' => 'novo')) ?>" class="btn btn-primary">Adicionar</a>
+</div>
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Herança</th>
+            <th>Admin</th>
+            <th width="80">Ações</th>
+        </tr>
+    </thead>
+    <?php foreach ($data as $item): ?>
+    <tr>
+        <td><?= $item->name ?></td>
+        <td><?= $item->parent ? $item->parent->name : '' ?></td>
+        <td><?= $item->isAdmin ? 'Sim' : 'Não' ?></td>
+        <td>
+            <a href="<?php echo $this->url('crud', array('controller' => 'role', 'action' => 'editar', 'id' => $item->id)) ?>" class="btn btn-small" rel="tooltip" title="Editar"><i class="icon-edit"></i></a>
+            <a href="<?php echo $this->url('crud', array('controller' => 'role', 'action' => 'excluir', 'id' => $item->id)) ?>" class="btn btn-small btn-danger" rel="tooltip" title="Excluir"><i class="icon-remove"></i></a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
+<?= $this->paginationControl($this->data, 'Sliding', 'paginator') ?>

@@ -20,28 +20,6 @@ class Module
     public function init(ModuleManager $moduleManager)
     {
 
-        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
-
-        $sharedEvents->attach(
-            'Zend\Mvc\Controller\AbstractActionController',
-            MvcEvent::EVENT_DISPATCH,
-            function ($e) {
-                $route = $e->getRouteMatch()->getMatchedRouteName();
-                if (in_array($route, explode(', ', 'login, logout'))) {
-                    return;
-                }
-
-                $auth = new AuthenticationService(
-                    new SessionStorage('manager_' . md5(getcwd()))
-                );
-
-                if (!$auth->hasIdentity()) {
-                    return $e->getTarget()->redirect()->toRoute('login');
-                }
-            },
-            100
-        );
-
     }
 
     public function getConfig()
@@ -64,7 +42,22 @@ class Module
     {
         return array(
             'factories' => array(
+                'Acl\\Form\\Role' => function ($sm) {
 
+                    $repository = $sm->get('Doctrine\ORM\EntityManager')
+                        ->getRepository('Acl\Entity\Role');
+
+                    return new Form\Role($repository->fetchParents());
+                },
+                'acl.role' => function ($sm) {
+                    return new Service\Role($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'acl.resource' => function ($sm) {
+                    return new Service\Resource($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'acl.privilege' => function ($sm) {
+                    return new Service\Privilege($sm->get('Doctrine\ORM\EntityManager'));
+                }
             ),
         );
     }
