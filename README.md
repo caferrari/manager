@@ -1,7 +1,7 @@
 # Manager
 
 [![Build Status](https://travis-ci.org/secom-tocantins/manager.png?branch=master)](https://travis-ci.org/secom-tocantins/manager)
-[![Coverage Status](https://coveralls.io/repos/secom-tocantins/manager/badge.png?branch=module-acl)](https://coveralls.io/r/secom-tocantins/manager?branch=module-acl)
+[![Coverage Status](https://coveralls.io/repos/secom-tocantins/manager/badge.png?branch=develop)](https://coveralls.io/r/secom-tocantins/manager?branch=develop)
 [![Dependency Status](https://www.versioneye.com/user/projects/51a4d198063e450002012a75/badge.png)](https://www.versioneye.com/user/projects/51a4d198063e450002012a75)
 
 Gerênciador Integrado de Órgão Público
