@@ -4,7 +4,7 @@ namespace Acl\Repository;
 
 use Common\AbstractRepository;
 
-class Privilege extends AbstractRepository
+class Usuario extends AbstractRepository
 {
 
 }

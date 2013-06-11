@@ -4,7 +4,7 @@ namespace Acl\Service;
 
 use Common\AbstractService;
 
-class Resource extends AbstractService
+class Privilege extends AbstractService
 {
 
 }

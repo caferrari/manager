@@ -17,8 +17,23 @@ return array(
             )
         )
     ),
-    'data-fixture' => array(
-        'Acl_fixture' => __DIR__ . '/../src/Acl/Fixture',
+    'router' => array(
+        'routes' => array(
+            'acl-usuario' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/usuario/:id/acl',
+                    'defaults' => array(
+                        'controller' => 'acl-usuario',
+                        'action' => 'index',
+                        'id' => null,
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    )
+                ),
+            )
+        ),
     ),
     'view_manager' => array(
         'template_path_stack' => array(
@@ -27,7 +42,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'role' => 'Acl\Controller\Role'
+            'acl-usuario' => 'Acl\Controller\Usuario'
         ),
     )
 );

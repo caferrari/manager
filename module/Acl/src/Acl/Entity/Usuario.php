@@ -3,14 +3,15 @@
 namespace Acl\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
-    Common\AbstractEntity;
+    Common\AbstractEntity,
+    Base\Entity\Usuario as UsuarioEntity;
 
 /**
- * @ORM\Table(name="role")
- * @ORM\Entity(repositoryClass="Acl\Repository\Role")
+ * @ORM\Table(name="privilege")
+ * @ORM\Entity(repositoryClass="Alc\Repository\Privilege")
  * @ORM\HasLifecycleCallbacks
  */
-class Role extends AbstractEntity
+class Usuario extends AbstractEntity
 {
 
     /**
@@ -21,20 +22,20 @@ class Role extends AbstractEntity
     protected $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Acl\Entity\Role")
-     * @ORM\JoinColumn(name="role_id", referencedColumnName="id", nullable=true, unique=false)
+     * @ORM\ManyToOne(targetEntity="Base\Entity\Usuario")
+     * @ORM\JoinColumn(name="usuario_id", referencedColumnName="id", nullable=false)
      */
-    protected $parent;
+    protected $usuario;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $name;
+    protected $resource;
 
     /**
-     * @ORM\Column(type="boolean", name="is_admin")
+     * @ORM\Column(type="string", length=100)
      */
-    protected $isAdmin = false;
+    protected $privilege;
 
     /**
      * @ORM\Column(type="datetime", name="created_at")
@@ -46,20 +47,15 @@ class Role extends AbstractEntity
      */
     protected $updatedAt;
 
-    public function __construct($data = array())
+    public function __construct($data)
     {
         parent::__construct($data);
         $this->createdAt = $this->updatedAt = new \DateTime();
     }
 
-    public function setParent(Role $parent)
+    public function setUsuario(UsuarioEntity $usuario)
     {
-
-        if ($this === $parent) {
-            throw new \RuntimeException('Uma role não pode ter ela mesma como parent');
-        }
-
-        $this->parent = $parent;
+        $this->usuario = $usuario;
     }
 
     /** @ORM\PrePersist */

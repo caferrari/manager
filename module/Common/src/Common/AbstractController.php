@@ -58,19 +58,19 @@ abstract class AbstractController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setData($request->getPost());
-            if ($form->isValid()) {
-                try {
-                    $this->getService()->insert($form->getData());
-                    $this->success($this->getMessage('insert', 'success'));
-                    $this->redirect()->toRoute('crud', array('controller' => $this->controller));
-                } catch(\Doctrine\DBAL\DBALException $e) {
-                    $pdoe = $e->getPrevious();
-                    if (23505 == $pdoe->getCode()) {
-                        $this->error($this->getMessage('unique', 'error'));
-                    }
+
+            try {
+                $form->validate();
+                $this->getService()->insert($form->getData());
+                $this->success($this->getMessage('insert', 'success'));
+                $this->redirect()->toRoute('crud', array('controller' => $this->controller));
+            } catch(\Doctrine\DBAL\DBALException $e) {
+                $pdoe = $e->getPrevious();
+                if (23505 == $pdoe->getCode()) {
+                    $this->error($this->getMessage('unique', 'error'));
                 }
-            } else {
-                $this->error($this->getMessage('insert', 'error'));
+            } catch (\Exception $e) {
+                $this->error($e->getMessage());
             }
         }
 
@@ -167,7 +167,8 @@ abstract class AbstractController extends AbstractActionController
         return $data;
     }
 
-    public function render($view = null, $data = null) {
+    public function render($view = null, $data = null)
+    {
 
         if (null === $data) {
             $data = array();
@@ -181,7 +182,8 @@ abstract class AbstractController extends AbstractActionController
         return $result;
     }
 
-    public function getMessage($action, $type) {
+    public function getMessage($action, $type)
+    {
         return $this->messages[$type][$action];
     }
 

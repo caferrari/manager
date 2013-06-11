@@ -14,17 +14,6 @@
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Base\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
             'crud' => array(
                 'type' => 'Segment',
                 'options' => array(
@@ -36,6 +25,18 @@ return array(
                     'constraints' => array(
                         'id' => '[0-9]+',
                     )
+                ),
+                'priority' => 999999
+            ),
+            'home' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Base\Controller',
+                        'controller' => 'Index',
+                        'action'     => 'index',
+                    ),
                 ),
             ),
             'login' => array(
@@ -57,7 +58,7 @@ return array(
                         'action'     => 'logout',
                     ),
                 ),
-            ),
+            )
         ),
     ),
     'controllers' => array(
