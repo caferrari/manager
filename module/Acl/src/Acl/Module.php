@@ -42,21 +42,8 @@ class Module
     {
         return array(
             'factories' => array(
-                'Acl\\Form\\Role' => function ($sm) {
-
-                    $repository = $sm->get('Doctrine\ORM\EntityManager')
-                        ->getRepository('Acl\Entity\Role');
-
-                    return new Form\Role($repository->fetchParents());
-                },
-                'acl.role' => function ($sm) {
-                    return new Service\Role($sm->get('Doctrine\ORM\EntityManager'));
-                },
-                'acl.resource' => function ($sm) {
-                    return new Service\Resource($sm->get('Doctrine\ORM\EntityManager'));
-                },
-                'acl.privilege' => function ($sm) {
-                    return new Service\Privilege($sm->get('Doctrine\ORM\EntityManager'));
+                'acl.usuario' => function ($sm) {
+                    return new Service\Usuario($sm->get('Doctrine\ORM\EntityManager'));
                 }
             ),
         );

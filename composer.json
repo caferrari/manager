@@ -27,7 +27,7 @@
         "zendframework/zend-json": ">2.1",
         "zendframework/zend-serializer": ">2.1",
         "zendframework/zend-i18n": ">2.1",
-        "zendframework/zend-permissions-acl": ">2.1",
+        "zendframework/zend-permissions-rbac": ">2.1",
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/doctrine-orm-module": "0.*",
         "hounddog/doctrine-data-fixture-module": "dev-master",

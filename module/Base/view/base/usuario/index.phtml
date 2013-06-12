@@ -11,7 +11,7 @@
         <tr>
             <th>Nome</th>
             <th>Email</th>
-            <th width="80">Ações</th>
+            <th width="120">Ações</th>
         </tr>
     </thead>
     <?php foreach ($data as $item): ?>
@@ -19,6 +19,7 @@
         <td><?= $item->nome ?></td>
         <td><?= $item->email ?></td>
         <td>
+            <a href="<?php echo $this->url('acl-usuario', array('id' => $item->id)) ?>" class="btn btn-small" rel="tooltip" title="Permissões"><i class="icon-lock"></i></a>
             <a href="<?php echo $this->url('crud', array('controller' => 'usuario', 'action' => 'editar', 'id' => $item->id)) ?>" class="btn btn-small" rel="tooltip" title="Editar"><i class="icon-edit"></i></a>
             <a href="<?php echo $this->url('crud', array('controller' => 'usuario', 'action' => 'excluir', 'id' => $item->id)) ?>" class="btn btn-small btn-danger" rel="tooltip" title="Excluir"><i class="icon-remove"></i></a>
         </td>
