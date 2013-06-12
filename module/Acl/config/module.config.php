@@ -44,5 +44,23 @@ return array(
         'invokables' => array(
             'acl-usuario' => 'Acl\Controller\Usuario'
         ),
+    ),
+    'acl' => array(
+        'acl' => array(
+            'label' => 'Controle de Acesso',
+            'tip' => 'Modulo principal do sistema',
+            'controllers' => array(
+                'usuario' => array(
+                    'label' => 'Usuários',
+                    'tip' => 'Gerênciamento de Permissões de Usuários',
+                    'actions' => array(
+                        'gerenciar' => array(
+                            'label' => 'Listar',
+                            'tip' => 'Definir permissões de usuários'
+                        )
+                    )
+                )
+            )
+        )
     )
 );

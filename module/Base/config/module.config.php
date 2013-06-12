@@ -25,5 +25,35 @@ return array(
             'usuario' => 'Base\Controller\Usuario',
             'cidade' => 'Base\Controller\Cidade',
         ),
+    ),
+    'acl' => array(
+        'base' => array(
+            'label' => 'Modulo Base',
+            'tip' => 'Modulo principal do sistema',
+            'controllers' => array(
+                'usuario' => array(
+                    'label' => 'Usuários',
+                    'tip' => 'Gerênciamento de Usuários',
+                    'actions' => array(
+                        'listar' => array(
+                            'label' => 'Listar',
+                            'tip' => 'Listar usuários'
+                        ),
+                        'adicionar' => array(
+                            'label' => 'Adicionar',
+                            'tip' => 'Adicionar um novo usuário no sistema'
+                        ),
+                        'editar' => array(
+                            'label' => 'Editar',
+                            'tip' => 'Editar um usuário'
+                        ),
+                        'excluir' => array(
+                            'label' => 'Editar',
+                            'tip' => 'Excluir usuários'
+                        )
+                    )
+                )
+            )
+        )
     )
 );

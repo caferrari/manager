@@ -7,8 +7,10 @@ use Doctrine\ORM\Mapping as ORM,
     Base\Entity\Usuario as UsuarioEntity;
 
 /**
- * @ORM\Table(name="privilege")
- * @ORM\Entity(repositoryClass="Alc\Repository\Privilege")
+ * @ORM\Table(name="usuario_acl",
+ *     uniqueConstraints={@ORM\UniqueConstraint(name="un_usuario_acl", columns={"usuario_id", "resource"})}
+ * )
+ * @ORM\Entity(repositoryClass="Alc\Repository\Usuario")
  * @ORM\HasLifecycleCallbacks
  */
 class Usuario extends AbstractEntity
@@ -33,14 +35,9 @@ class Usuario extends AbstractEntity
     protected $resource;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=5)
      */
     protected $privilege;
-
-    /**
-     * @ORM\Column(type="datetime", name="created_at")
-     */
-    protected $createdAt;
 
     /**
      * @ORM\Column(type="datetime", name="updated_at")
@@ -50,7 +47,7 @@ class Usuario extends AbstractEntity
     public function __construct($data)
     {
         parent::__construct($data);
-        $this->createdAt = $this->updatedAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function setUsuario(UsuarioEntity $usuario)

@@ -26,7 +26,7 @@ return array(
                         'id' => '[0-9]+',
                     )
                 ),
-                'priority' => 999999
+                'priority' => 0
             ),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',

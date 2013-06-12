@@ -1,0 +1,74 @@
+<h2>Permissões do Usuário: <?= $this->usuario->nome ?></h2>
+<hr />
+
+
+<form method="post" id="frmpermission">
+<?php foreach ($this->acl as $module_id => $module): ?>
+
+<?php foreach ($module['controllers'] as $controller_id => $controller): ?>
+
+<h4><?= $controller['tip'] ?></h4>
+
+<table class="table table-bordered table-hover">
+<?php foreach ($controller['actions'] as $action_id => $action): ?>
+<tr>
+    <td><?= $action['tip'] ?></td>
+    <td width="150">
+        <div class="btn-group" data-toggle="buttons-radio">
+            <a class="btn btn-small" data-value="<?= "{$module_id}_{$controller_id}_{$action_id}/allow" ?>">Permitir</a>
+            <a class="btn btn-small" data-value="<?= "{$module_id}_{$controller_id}_{$action_id}/deny" ?>">Negar</a>
+            <a class="btn btn-small" data-value="">Nenhum</a>
+        </div>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+<?php endforeach; ?>
+
+<?php endforeach; ?>
+
+<div class="control-group">
+    <div class="controls">
+    <button class="btn">Salvar</button> ou <a href="">Voltar</a>
+    </div>
+</div>
+
+</form>
+
+<script>
+
+    $(document).ready(function() {
+
+        $('#frmpermission').on('submit', function(e) {
+
+            //e.preventDefault();
+
+            var permissions = {};
+
+            var links = $('.btn-group a.active').each(function(i) {
+                var permission = $(this).data('value');
+                if (!permission) return;
+
+                permission = permission.split('/');
+
+                var resource = permission.shift();
+                var allow = permission.shift();
+
+                permissions[resource] = allow;
+
+            });
+
+            var input = $('<input type="hidden" name="perms">');
+
+            input.val($.param(permissions));
+
+            $(this).append(input);
+
+            return true;
+
+        })
+
+    });
+
+</script>
