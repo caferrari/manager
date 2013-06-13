@@ -44,8 +44,11 @@ class Module
             'factories' => array(
                 'acl.usuario' => function ($sm) {
                     return new Service\Usuario($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'acl.service' => function ($sm) {
+                    return new Service\Acl($sm->get('Doctrine\ORM\EntityManager'));
                 }
-            ),
+            )
         );
     }
 

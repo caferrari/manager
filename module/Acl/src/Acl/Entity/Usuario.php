@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM,
  * @ORM\Table(name="usuario_acl",
  *     uniqueConstraints={@ORM\UniqueConstraint(name="un_usuario_acl", columns={"usuario_id", "resource"})}
  * )
- * @ORM\Entity(repositoryClass="Alc\Repository\Usuario")
+ * @ORM\Entity(repositoryClass="Acl\Repository\Usuario")
  * @ORM\HasLifecycleCallbacks
  */
 class Usuario extends AbstractEntity

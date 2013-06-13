@@ -4,7 +4,8 @@ namespace Base\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
     Common\AbstractEntity,
-    Zend\Crypt\Password\Bcrypt;
+    Zend\Crypt\Password\Bcrypt,
+    Zend\Permissions\Rbac\Rbac;
 
 /**
  * @ORM\Table(name="usuario",
@@ -47,6 +48,8 @@ class Usuario extends AbstractEntity
      */
     protected $salt;
 
+    protected $permissions;
+
     /** @ORM\PrePersist */
     public function validate()
     {
@@ -76,6 +79,16 @@ class Usuario extends AbstractEntity
             $this->regenerateSalt();
         }
         return $this->salt;
+    }
+
+    public function setPermissions(array $permissions)
+    {
+        $this->permissions = $permissions;
+    }
+
+    public function getPermissions()
+    {
+        return $this->permissions;
     }
 
     public function regenerateSalt()

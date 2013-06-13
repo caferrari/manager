@@ -38,6 +38,22 @@ class Module
 
                 if (!$auth->hasIdentity()) {
                     return $e->getTarget()->redirect()->toRoute('login');
+                } else {
+
+                    $params = $e->getRouteMatch()->getParams();
+                    $resource = $e->getTarget()->getResource() . "_{$params['action']}";
+                    if ('base_index_index' == $resource) {
+                        return;
+                    }
+
+                    $userPermissions = $auth->getIdentity()->getPermissions();
+
+                    if (in_array($resource, $userPermissions) ) {
+                        return;
+                    }
+
+                    return $e->getTarget()->redirect()->toRoute('home');
+
                 }
             },
             100
@@ -72,7 +88,9 @@ class Module
                     return new Service\Cidade($sm->get('Doctrine\ORM\EntityManager'));
                 },
                 'base.authadapter' => function ($sm) {
-                    return new AuthAdapter($sm->get('Doctrine\ORM\EntityManager'));
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    $aclService = $sm->get('acl.service');
+                    return new AuthAdapter($em, $aclService);
                 }
             ),
         );

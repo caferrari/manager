@@ -202,4 +202,10 @@ abstract class AbstractController extends AbstractActionController
         $this->flashMessenger()->setNamespace($namespace)->addMessage($message);
     }
 
+    public function getResource()
+    {
+        list ($namespace, $controller) = explode('\\', str_replace('\\controller\\', '\\', strtolower(get_called_class())));
+        return "{$namespace}_{$controller}";
+    }
+
 }
