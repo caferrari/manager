@@ -17,7 +17,11 @@
     "minimum-stability" : "dev",
     "require": {
         "php": ">=5.4",
+        "zendframework/zend-loader": "dev-master",
+        "zendframework/zend-http": ">2.1",
         "zendframework/zend-mvc": ">2.1",
+        "zendframework/zend-view": ">2.1",
+        "zendframework/zend-console": ">2.1",
         "zendframework/zend-config": ">2.1",
         "zendframework/zend-cache": ">2.1",
         "zendframework/zend-authentication": ">2.1",
