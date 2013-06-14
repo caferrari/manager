@@ -4,6 +4,8 @@ namespace Acl;
 
 use Zend\Mvc\ModuleRouteListener,
     Zend\Mvc\MvcEvent,
+    Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Storage\Session as SessionStorage,
     Zend\ModuleManager\ModuleManager;
 
 class Module
@@ -11,15 +13,52 @@ class Module
 
     public function onBootstrap(MvcEvent $e)
     {
-        //$e->getApplication()->getServiceManager()->get('translator');
-        $eventManager        = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
+        (new ModuleRouteListener())->attach($e->getApplication()->getEventManager());
     }
 
     public function init(ModuleManager $moduleManager)
     {
+        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
 
+        $sharedEvents->attach(
+            'Zend\Mvc\Controller\AbstractActionController',
+            MvcEvent::EVENT_DISPATCH,
+            function ($e) {
+                $route = $e->getRouteMatch()->getMatchedRouteName();
+                if (in_array($route, explode(', ', 'login, logout'))) {
+                    return;
+                }
+
+                $auth = new AuthenticationService(
+                    new SessionStorage('manager_' . md5(getcwd()))
+                );
+
+                if (!$auth->hasIdentity()) {
+                    return $e->getTarget()->redirect()->toRoute('login');
+                } else {
+
+                    if ($auth->getIdentity()->isAdmin()) {
+                        return;
+                    }
+
+                    $params = $e->getRouteMatch()->getParams();
+                    $resource = $e->getTarget()->getResource() . "_{$params['action']}";
+                    if ('base_index_index' == $resource) {
+                        return;
+                    }
+
+                    $userPermissions = $auth->getIdentity()->getPermissions();
+
+                    if (in_array($resource, $userPermissions) ) {
+                        return;
+                    }
+
+                    return $e->getTarget()->redirect()->toRoute('home');
+
+                }
+            },
+            100
+        );
     }
 
     public function getConfig()

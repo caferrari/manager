@@ -95,4 +95,9 @@ class Usuario extends AbstractEntity
     {
         $this->salt = sha1(uniqid(mt_rand(), true));
     }
+
+    public function isAdmin()
+    {
+        return 'a' == $this->tipo;
+    }
 }

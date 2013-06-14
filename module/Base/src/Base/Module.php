@@ -4,9 +4,7 @@ namespace Base;
 
 use Zend\Mvc\ModuleRouteListener,
     Zend\Mvc\MvcEvent,
-    Zend\ModuleManager\ModuleManager,
-    Zend\Authentication\AuthenticationService,
-    Zend\Authentication\Storage\Session as SessionStorage;;
+    Zend\ModuleManager\ModuleManager;
 
 use Base\Auth\Adapter as AuthAdapter;
 
@@ -20,44 +18,6 @@ class Module
 
     public function init(ModuleManager $moduleManager)
     {
-
-        $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
-
-        $sharedEvents->attach(
-            'Zend\Mvc\Controller\AbstractActionController',
-            MvcEvent::EVENT_DISPATCH,
-            function ($e) {
-                $route = $e->getRouteMatch()->getMatchedRouteName();
-                if (in_array($route, explode(', ', 'login, logout'))) {
-                    return;
-                }
-
-                $auth = new AuthenticationService(
-                    new SessionStorage('manager_' . md5(getcwd()))
-                );
-
-                if (!$auth->hasIdentity()) {
-                    return $e->getTarget()->redirect()->toRoute('login');
-                } else {
-
-                    $params = $e->getRouteMatch()->getParams();
-                    $resource = $e->getTarget()->getResource() . "_{$params['action']}";
-                    if ('base_index_index' == $resource) {
-                        return;
-                    }
-
-                    $userPermissions = $auth->getIdentity()->getPermissions();
-
-                    if (in_array($resource, $userPermissions) ) {
-                        return;
-                    }
-
-                    return $e->getTarget()->redirect()->toRoute('home');
-
-                }
-            },
-            100
-        );
 
     }
 
