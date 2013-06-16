@@ -56,20 +56,4 @@ class Module
         );
     }
 
-    public function getViewHelperConfig()
-    {
-        return array(
-            'factories' => array(
-                'flashMessage' => function ($sm) {
-                    $flashmessenger = $sm->getServiceLocator()
-                        ->get('ControllerPluginManager')
-                        ->get('flashmessenger');
-
-                    $message = new \Common\Helper\FlashMessages;
-                    $message->setFlashMessager($flashmessenger);
-                    return $message ;
-                }
-            ),
-        );
-    }
 }
