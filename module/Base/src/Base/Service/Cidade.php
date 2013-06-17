@@ -2,7 +2,7 @@
 
 namespace Base\Service;
 
-use Common\AbstractService;
+use CafCommon\AbstractService;
 
 class Cidade extends AbstractService
 {

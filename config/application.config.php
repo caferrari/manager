@@ -5,7 +5,7 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'DoctrineDataFixtureModule',
-        'Common',
+        'CafCommon',
         'Base',
         'Acl'
     ),

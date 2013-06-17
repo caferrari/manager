@@ -3,7 +3,7 @@
 namespace Base\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
-    Common\AbstractEntity,
+    CafCommon\AbstractEntity,
     Zend\Crypt\Password\Bcrypt,
     Zend\Permissions\Rbac\Rbac;
 

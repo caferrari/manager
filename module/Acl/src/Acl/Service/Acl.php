@@ -2,7 +2,7 @@
 
 namespace Acl\Service;
 
-use Common\AbstractService,
+use CafCommon\AbstractService,
     Base\Entity\Usuario as UsuarioEntity,
     Zend\Permissions\Rbac;
 

@@ -3,7 +3,7 @@
 
 namespace Base\Repository;
 
-use Common\AbstractRepository;
+use CafCommon\AbstractRepository;
 
 class Usuario extends AbstractRepository
 {

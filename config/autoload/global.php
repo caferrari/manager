@@ -12,60 +12,6 @@
  */
 
 return array(
-    'router' => array(
-        'routes' => array(
-            'crud' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route' => '/:controller[/:action][?id=:id]',
-                    'defaults' => array(
-                        'action' => 'index',
-                        'id' => null,
-                    ),
-                    'constraints' => array(
-                        'id' => '[0-9]+',
-                    )
-                ),
-                'priority' => 0
-            ),
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Base\Controller',
-                        'controller' => 'Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
-            'login' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/login',
-                    'defaults' => array(
-                        'controller' => 'usuario',
-                        'action'     => 'login',
-                    ),
-                ),
-            ),
-            'logout' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/logout',
-                    'defaults' => array(
-                        'controller' => 'usuario',
-                        'action'     => 'logout',
-                    ),
-                ),
-            )
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Base\Controller\Index' => 'Base\Controller\Index',
-        ),
-    ),
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,

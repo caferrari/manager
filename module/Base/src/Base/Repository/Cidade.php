@@ -2,7 +2,7 @@
 
 namespace Base\Repository;
 
-use Common\AbstractRepository;
+use CafCommon\AbstractRepository;
 
 class Cidade extends AbstractRepository
 {

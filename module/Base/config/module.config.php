@@ -20,8 +20,43 @@ return array(
     'data-fixture' => array(
         'Base_fixture' => __DIR__ . '/../src/' . __NAMESPACE__ . '/Fixture',
     ),
+    'router' => array(
+        'routes' => array(
+            'home' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/',
+                    'defaults' => array(
+                        'controller' => 'index',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'login' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/login',
+                    'defaults' => array(
+                        'controller' => 'usuario',
+                        'action'     => 'login',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/logout',
+                    'defaults' => array(
+                        'controller' => 'usuario',
+                        'action'     => 'logout',
+                    ),
+                ),
+            )
+        ),
+    ),
     'controllers' => array(
         'invokables' => array(
+            'index' => 'Base\Controller\Index',
             'usuario' => 'Base\Controller\Usuario',
             'cidade' => 'Base\Controller\Cidade',
         ),

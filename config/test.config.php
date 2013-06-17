@@ -3,7 +3,7 @@ return array(
     'modules' => array(
         'DoctrineModule',
         'DoctrineORMModule',
-        'Common',
+        'CafCommon',
         'Base',
         'Acl'
     ),

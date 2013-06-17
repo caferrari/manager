@@ -3,7 +3,7 @@
 namespace Acl\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
-    Common\AbstractEntity,
+    CafCommon\AbstractEntity,
     Base\Entity\Usuario as UsuarioEntity;
 
 /**

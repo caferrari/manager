@@ -2,7 +2,7 @@
 
 namespace Acl\Controller;
 
-use Common\AbstractController;
+use CafCommon\AbstractController;
 
 class Usuario extends AbstractController
 {

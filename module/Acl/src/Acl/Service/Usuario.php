@@ -2,7 +2,7 @@
 
 namespace Acl\Service;
 
-use Common\AbstractService,
+use CafCommon\AbstractService,
     Acl\Entity\Usuario as Acl,
     Base\Entity\Usuario as UsuarioEntity;
 

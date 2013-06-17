@@ -2,7 +2,7 @@
 
 namespace Base\Controller;
 
-use Common\AbstractController;
+use CafCommon\AbstractController;
 
 class Cidade extends AbstractController
 {

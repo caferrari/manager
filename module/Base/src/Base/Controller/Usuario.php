@@ -5,7 +5,7 @@ namespace Base\Controller;
 use Zend\Authentication\AuthenticationService,
     Zend\Authentication\Storage\Session as SessionStorage;
 
-use Common\AbstractController,
+use CafCommon\AbstractController,
     Base\Form\Login as LoginForm;
 
 class Usuario extends AbstractController

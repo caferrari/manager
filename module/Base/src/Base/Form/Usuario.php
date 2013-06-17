@@ -2,7 +2,7 @@
 
 namespace Base\Form;
 
-use Common\AbstractForm;
+use CafCommon\AbstractForm;
 
 class Usuario extends AbstractForm
 {
