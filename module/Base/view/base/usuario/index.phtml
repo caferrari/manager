@@ -14,14 +14,18 @@
             <th width="120">Ações</th>
         </tr>
     </thead>
-    <?php foreach ($data as $item): ?>
+    <?php foreach ($data as $user): ?>
     <tr>
-        <td><?= $item->nome ?></td>
-        <td><?= $item->email ?></td>
-        <td>
-            <a href="<?php echo $this->url('acl-usuario', array('id' => $item->id)) ?>" class="btn btn-small" rel="tooltip" title="Permissões"><i class="icon-lock"></i></a>
-            <a href="<?php echo $this->url('crud', array('controller' => 'usuario', 'action' => 'editar', 'id' => $item->id)) ?>" class="btn btn-small" rel="tooltip" title="Editar"><i class="icon-edit"></i></a>
-            <a href="<?php echo $this->url('crud', array('controller' => 'usuario', 'action' => 'excluir', 'id' => $item->id)) ?>" class="btn btn-small btn-danger" rel="tooltip" title="Excluir"><i class="icon-remove"></i></a>
+        <td><?= $user->nome ?></td>
+        <td><?= $user->email ?></td>
+        <td class="text-right">
+            <?php if (!$user->isAdmin()): ?>
+            <a href="<?php echo $this->url('acl-usuario', array('id' => $user->id)) ?>" class="btn btn-small" rel="tooltip" title="Permissões"><i class="icon-lock"></i></a>
+            <?php else: ?>
+            <a href="#" class="btn btn-small disabled"><i class="icon-lock icon-white"></i></a>
+            <?php endif; ?>
+            <a href="<?php echo $this->url('crud', array('controller' => 'usuario', 'action' => 'editar', 'id' => $user->id)) ?>" class="btn btn-small" rel="tooltip" title="Editar"><i class="icon-edit"></i></a>
+            <a href="<?php echo $this->url('crud', array('controller' => 'usuario', 'action' => 'excluir', 'id' => $user->id)) ?>" class="btn btn-small btn-danger" rel="tooltip" title="Excluir"><i class="icon-remove"></i></a>
         </td>
     </tr>
     <?php endforeach; ?>

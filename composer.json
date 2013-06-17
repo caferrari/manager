@@ -27,14 +27,14 @@
         "zendframework/zend-serializer": ">2.1",
         "zendframework/zend-navigation": ">2.1",
         "zendframework/zend-permissions-acl": "dev-master",
-        "zendframework/zend-developer-tools": "dev-master",
         "doctrine/doctrine-orm-module": "0.*",
-        "hounddog/doctrine-data-fixture-module": "dev-master",
-        "phpunit/phpunit": "3.7.*",
-        "satooshi/php-coveralls": "dev-master"
+        "hounddog/doctrine-data-fixture-module": "dev-master"
     },
     "require-dev": {
-        "caferrari/caf-common": "dev-master"
+        "caferrari/caf-common": "dev-master",
+        "zendframework/zend-developer-tools": "dev-master",
+        "phpunit/phpunit": "3.7.*",
+        "satooshi/php-coveralls": "dev-master"
     },
     "config" : {
         "process-timeout" : 4000
