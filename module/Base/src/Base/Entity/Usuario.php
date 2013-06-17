@@ -5,7 +5,7 @@ namespace Base\Entity;
 use Doctrine\ORM\Mapping as ORM,
     CafCommon\AbstractEntity,
     Zend\Crypt\Password\Bcrypt,
-    Zend\Permissions\Rbac\Rbac;
+    Zend\Permissions\Acl\Acl;
 
 /**
  * @ORM\Table(name="usuario",
@@ -49,6 +49,7 @@ class Usuario extends AbstractEntity
     protected $salt;
 
     protected $permissions;
+    protected $acl;
 
     /** @ORM\PrePersist */
     public function validate()
@@ -96,7 +97,22 @@ class Usuario extends AbstractEntity
         $this->salt = sha1(uniqid(mt_rand(), true));
     }
 
+    public function setAcl(Acl $acl)
+    {
+        $this->acl = $acl;
+    }
+
+    public function getAcl()
+    {
+        return $this->acl;
+    }
+
     public function isAdmin()
+    {
+        return $this->isMasterAdmin() || 'b' == $this->tipo;
+    }
+
+    public function isMasterAdmin()
     {
         return 'a' == $this->tipo;
     }

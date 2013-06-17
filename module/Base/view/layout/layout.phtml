@@ -21,6 +21,7 @@
 
     </head>
     <body>
+
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
@@ -32,13 +33,17 @@
                     <a class="brand" href="<?php echo $this->url('home') ?>">Manager</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li><a href="<?php echo $this->url('home') ?>">Painel</a></li>
-                            <li class="dropdown"><a  class="dropdown-toggle" data-toggle="dropdown" href="#">Cadastros</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="<?php echo $this->url('crud', array('controller' => 'cidade')) ?>">Cidades</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="<?php echo $this->url('crud', array('controller' => 'usuario')) ?>">Usuários</a></li>
+                            <?php if ($this->identity()): ?>
+                            <?php
+                              echo $this->navigation('navigation')
+                              ->menu()
+                              ->setMinDepth(0)
+                              ->setMaxDepth(0)
+                              ->setUlClass('nav')
+                              ->setPartial(array('base/navigation/topnav.phtml', 'Base'));
+                            ?>
+                            <li><a href="<?= $this->url('logout') ?>">Logout</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>

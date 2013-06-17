@@ -12,19 +12,16 @@ class Usuario extends AbstractController
 
 
         $request = $this->getRequest();
+        $id = $this->params('id');
 
         if ($request->isPost()) {
 
             parse_str($request->getPost()->perms, $perms);
 
             $service = $this->getService();
-            $service->updatePermissions(1, $perms);
-
-
+            $service->updatePermissions($id, $perms);
 
         }
-
-        $id = $this->params('id');
 
         $usuario = $this->getRepository('Base\Entity\Usuario')->find($id);
 

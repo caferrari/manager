@@ -4,7 +4,9 @@ namespace Base;
 
 use Zend\Mvc\ModuleRouteListener,
     Zend\Mvc\MvcEvent,
-    Zend\ModuleManager\ModuleManager;
+    Zend\ModuleManager\ModuleManager,
+    Zend\Authentication\AuthenticationService,
+    Zend\Authentication\Storage\Session as SessionStorage;
 
 use Base\Auth\Adapter as AuthAdapter;
 
@@ -14,11 +16,6 @@ class Module
     public function onBootstrap(MvcEvent $e)
     {
         (new ModuleRouteListener())->attach($e->getApplication()->getEventManager());
-    }
-
-    public function init(ModuleManager $moduleManager)
-    {
-
     }
 
     public function getConfig()
@@ -53,6 +50,28 @@ class Module
                     return new AuthAdapter($em, $aclService);
                 }
             ),
+        );
+    }
+
+
+    public function getViewHelperConfig()
+    {
+        return array(
+            'factories' => array(
+                'navigation' => function ($sm) {
+
+                    $auth = new AuthenticationService(
+                        new SessionStorage('manager_' . md5(getcwd()))
+                    );
+
+                    $navigation = $sm->get('Zend\View\Helper\Navigation');
+                    if ($identity = $auth->getIdentity()) {
+                        $navigation->setAcl($auth->getIdentity()->getAcl())->setRole('user');
+                    }
+
+                    return $navigation;
+                }
+            )
         );
     }
 
