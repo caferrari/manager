@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM,
     Zend\Crypt\Password\Bcrypt;
 
 /**
- * @ORM\Table(name="orgao")
+ * @ORM\Table(name="orgao",uniqueConstraints={@ORM\UniqueConstraint(name="un_orgao_nome", columns={"nome"})})
  * @ORM\Entity(repositoryClass="Base\Repository\Orgao") @ORM\HasLifecycleCallbacks
  */
 class Orgao extends AbstractEntity
@@ -31,7 +31,7 @@ class Orgao extends AbstractEntity
     protected $nome;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, nullable=true)
      */
     protected $telefone;
 

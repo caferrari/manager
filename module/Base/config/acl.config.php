@@ -50,6 +50,28 @@ return array(
                         'tip' => 'Excluir cidade'
                     )
                 )
+            ),
+            'orgao' => array(
+                'label' => 'Órgãos',
+                'tip' => 'Gerênciamento de Órgãos',
+                'actions' => array(
+                    'index' => array(
+                        'label' => 'Listar',
+                        'tip' => 'Listar órgãos'
+                    ),
+                    'adicionar' => array(
+                        'label' => 'Adicionar',
+                        'tip' => 'Adicionar um novo órgão'
+                    ),
+                    'editar' => array(
+                        'label' => 'Editar',
+                        'tip' => 'Editar órgão'
+                    ),
+                    'excluir' => array(
+                        'label' => 'Editar',
+                        'tip' => 'Excluir órgão'
+                    )
+                )
             )
         )
     )

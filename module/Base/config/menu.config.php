@@ -22,6 +22,13 @@ return array(
                     'resource' => 'base_cidade_index'
                 ),
                 array(
+                    'label' => 'Órgãos',
+                    'route' => 'crud',
+                    'controller' => 'orgao',
+                    'action' => 'index',
+                    'resource' => 'base_orgao_index'
+                ),
+                array(
                     'label' => 'Usuários',
                     'route' => 'crud',
                     'controller' => 'usuario',

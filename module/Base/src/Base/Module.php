@@ -44,6 +44,9 @@ class Module
                 'base.cidade' => function ($sm) {
                     return new Service\Cidade($sm->get('Doctrine\ORM\EntityManager'));
                 },
+                'base.orgao' => function ($sm) {
+                    return new Service\Orgao($sm->get('Doctrine\ORM\EntityManager'));
+                },
                 'base.authadapter' => function ($sm) {
                     $em = $sm->get('Doctrine\ORM\EntityManager');
                     $aclService = $sm->get('acl.service');

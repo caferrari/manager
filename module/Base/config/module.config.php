@@ -25,6 +25,7 @@ return array(
             'index' => 'Base\Controller\Index',
             'usuario' => 'Base\Controller\Usuario',
             'cidade' => 'Base\Controller\Cidade',
+            'orgao' => 'Base\Controller\Orgao',
         ),
     ),
     'service_manager' => array(
