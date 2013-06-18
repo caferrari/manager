@@ -1,4 +1,6 @@
-<h2>Órgaos</h2>
+<h2>Órgãos</h2>
+
+<hr />
 
 <?php echo $this->flashMessage(); ?>
 
@@ -10,7 +12,7 @@
     <thead>
         <tr>
             <th>Nome</th>
-            <th width="80">Ações</th>
+            <th width="120">Ações</th>
         </tr>
     </thead>
     <?php foreach ($orgaos as $orgao):
@@ -18,6 +20,7 @@
     <tr>
         <td><?= $orgao->nome ?></td>
         <td>
+            <a href="<?php echo $this->url('crud', array('controller' => 'setor', 'action' => 'index')) . '?id_orgao=' . $orgao->id ?>" class="btn btn-small" rel="tooltip" title="Setores"><i class="icon-sitemap"></i></a>
             <a href="<?php echo $this->url('crud', array('controller' => 'orgao', 'action' => 'editar', 'id' => $orgao->id)) ?>" class="btn btn-small" rel="tooltip" title="Editar"><i class="icon-edit"></i></a>
             <a href="<?php echo $this->url('crud', array('controller' => 'orgao', 'action' => 'excluir', 'id' => $orgao->id)) ?>" class="btn btn-small btn-danger" rel="tooltip" title="Excluir"><i class="icon-remove"></i></a>
         </td>

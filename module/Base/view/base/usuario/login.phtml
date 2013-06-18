@@ -1,4 +1,6 @@
 <h2>Login</h2>
+<hr />
+
 <?php
 $form->prepare();
 ?>
@@ -7,8 +9,9 @@ $form->prepare();
 
 <?= $this->form()->openTag($form); ?>
 
-<?= $this->bootstrapRow($form->get('email')); ?>
-<?= $this->bootstrapRow($form->get('senha')); ?>
+<?= $this->bootstrapRow($form->get('email'))->prependIcon('icon-envelope'); ?>
+<?= $this->bootstrapRow($form->get('senha'))->prependIcon('icon-key'); ?>
+
 <?= $this->formHidden($form->get('security')); ?>
 
 <div class="control-group">
