@@ -43,7 +43,6 @@
                               ->setUlClass('nav')
                               ->setPartial(array('base/navigation/topnav.phtml', 'Base'));
                             ?>
-                            <li><a href="<?= $this->url('logout') ?>">Logout</a></li>
                             <?php endif; ?>
                         </ul>
                         <?php if ($this->identity()): ?>
@@ -85,20 +84,19 @@
 
             <div class="row-fluid">
 
-            <div class="span8">
+                <div class="span8">
 
-                <?php echo $this->flashMessage(); ?>
+                    <?php echo $this->flashMessage(); ?>
 
-                <?php echo $this->content; ?>
+                    <?php echo $this->content; ?>
 
-            </div>
+                </div>
 
-            <div class="span4 alert alert-warning">
-                <h4>Instruções</h4>
+                <div class="span4 alert alert-warning">
+                    <h4>Instruções</h4>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, eius, iure repellat ad officiis autem itaque minus consequuntur. Dolore, repudiandae, magnam praesentium quis atque quidem deserunt unde corrupti eveniet incidunt?</p>
-
-            </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, eius, iure repellat ad officiis autem itaque minus consequuntur. Dolore, repudiandae, magnam praesentium quis atque quidem deserunt unde corrupti eveniet incidunt?</p>
+                </div>
 
             </div>
             <hr>
