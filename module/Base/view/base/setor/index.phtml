@@ -1,8 +1,3 @@
-<h2>Setores</h2>
-<hr />
-
-<?php echo $this->flashMessage(); ?>
-
 <div class="btn-toolbar">
     <a href="<?php echo $this->url('crud', array('controller' => 'setor', 'action' => 'novo')) ?>" class="btn btn-primary">Adicionar</a>
 </div>
@@ -12,7 +7,7 @@
         <tr>
             <th>Nome</th>
             <th>Parent</th>
-            <th width="120">Ações</th>
+            <th width="80">Ações</th>
         </tr>
     </thead>
     <?php foreach ($setores as $setor): ?>

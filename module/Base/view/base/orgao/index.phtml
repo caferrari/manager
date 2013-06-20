@@ -1,29 +1,23 @@
-<h2>Órgãos</h2>
+    <div class="btn-toolbar">
+        <a href="<?php echo $this->url('crud', array('controller' => 'orgao', 'action' => 'novo')) ?>" class="btn btn-primary">Adicionar</a>
+    </div>
 
-<hr />
-
-<?php echo $this->flashMessage(); ?>
-
-<div class="btn-toolbar">
-    <a href="<?php echo $this->url('crud', array('controller' => 'orgao', 'action' => 'novo')) ?>" class="btn btn-primary">Adicionar</a>
-</div>
-
-<table class="table table-condensed">
-    <thead>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th width="120">Ações</th>
+            </tr>
+        </thead>
+        <?php foreach ($orgaos as $orgao):
+        ?>
         <tr>
-            <th>Nome</th>
-            <th width="120">Ações</th>
+            <td><?= $orgao->nome ?></td>
+            <td>
+                <a href="<?php echo $this->url('crud', array('controller' => 'setor', 'action' => 'index')) . '?id_orgao=' . $orgao->id ?>" class="btn btn-small" rel="tooltip" title="Setores"><i class="icon-sitemap"></i></a>
+                <a href="<?php echo $this->url('crud', array('controller' => 'orgao', 'action' => 'editar', 'id' => $orgao->id)) ?>" class="btn btn-small" rel="tooltip" title="Editar"><i class="icon-edit"></i></a>
+                <a href="<?php echo $this->url('crud', array('controller' => 'orgao', 'action' => 'excluir', 'id' => $orgao->id)) ?>" class="btn btn-small btn-danger" rel="tooltip" title="Excluir"><i class="icon-remove"></i></a>
+            </td>
         </tr>
-    </thead>
-    <?php foreach ($orgaos as $orgao):
-    ?>
-    <tr>
-        <td><?= $orgao->nome ?></td>
-        <td>
-            <a href="<?php echo $this->url('crud', array('controller' => 'setor', 'action' => 'index')) . '?id_orgao=' . $orgao->id ?>" class="btn btn-small" rel="tooltip" title="Setores"><i class="icon-sitemap"></i></a>
-            <a href="<?php echo $this->url('crud', array('controller' => 'orgao', 'action' => 'editar', 'id' => $orgao->id)) ?>" class="btn btn-small" rel="tooltip" title="Editar"><i class="icon-edit"></i></a>
-            <a href="<?php echo $this->url('crud', array('controller' => 'orgao', 'action' => 'excluir', 'id' => $orgao->id)) ?>" class="btn btn-small btn-danger" rel="tooltip" title="Excluir"><i class="icon-remove"></i></a>
-        </td>
-    </tr>
-    <?php endforeach; ?>
-</table>
+        <?php endforeach; ?>
+    </table>

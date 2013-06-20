@@ -71,7 +71,36 @@
             <?php $this->navigation('navigation')->breadcrumbs()->setPartial($partial) ?>
             <?php echo $this->navigation('navigation')->breadcrumbs()->render() ?>
 
-            <?php echo $this->content; ?>
+            <?php
+            $navigation = $this->navigation('navigation');
+            $active = $navigation->findActive($navigation->getContainer());
+
+            if ($active):
+                $page = $active['page'];
+
+            ?>
+            <h2><?= $page->getLabel() ?></h2>
+            <hr />
+            <?php endif; ?>
+
+            <div class="row-fluid">
+
+            <div class="span8">
+
+                <?php echo $this->flashMessage(); ?>
+
+                <?php echo $this->content; ?>
+
+            </div>
+
+            <div class="span4 alert alert-warning">
+                <h4>Instruções</h4>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, eius, iure repellat ad officiis autem itaque minus consequuntur. Dolore, repudiandae, magnam praesentium quis atque quidem deserunt unde corrupti eveniet incidunt?</p>
+
+            </div>
+
+            </div>
             <hr>
             <footer>
                 <p>&copy; <?= date('Y') ?> by Secretaria da Comunicação do Tocantins</p>

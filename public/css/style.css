@@ -39,3 +39,7 @@ div.container a.brand {
 .no-overflow {
   overflow: visible;
 }
+
+.input-append, .input-prepend {
+  display: block !important
+}
