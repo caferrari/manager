@@ -51,12 +51,22 @@ class Usuario extends AbstractEntity
     protected $permissions;
     protected $acl;
 
-    /** @ORM\PreFlush */
+    /** @ORM\PreUpdate
+     *  @ORM\PrePersist
+     */
     public function validate()
     {
         parent::validate();
-        if (($this->id || $this->senha)) {
+        if (($this->senha && strlen($this->senha) < 60)) {
             $this->senha = $this->getBcrypt()->create($this->generatePassword($this->senha));
+        }
+
+        if ('' == $this->senha) {
+            $if = $this->getInputFilter();
+            $if->get('senha')->setAllowEmpty(false);
+            $if->get('senha')->setRequired(true);
+
+            parent::validate();
         }
 
         return true;
@@ -69,17 +79,10 @@ class Usuario extends AbstractEntity
 
     public function getBcrypt()
     {
-
-        $cost = array(
-            'a' => 16,
-            'b' => 15,
-            'c' => 14
-        );
-
         return new Bcrypt(
             array(
                 'salt' => $this->getSalt(),
-                'cost' => $cost[$this->tipo]
+                'cost' => 13
             )
         );
     }

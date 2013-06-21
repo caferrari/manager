@@ -90,6 +90,12 @@ class Usuario extends InputFilter
                             'messages' => array('stringLengthTooShort' => 'Senha deve ter no mínimo %min% caracteres'),
                             'min' => 8
                         )
+                    ),
+                    array(
+                        'name' => 'NotEmpty',
+                        'options' => array(
+                            'messages' => array('isEmpty' => 'É necessário digitar uma senha')
+                        )
                     )
                 )
             )
