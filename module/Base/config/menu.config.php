@@ -87,7 +87,11 @@ return array(
                         array(
                             'label' => 'Permissões',
                             'route' => 'acl-usuario'
-                        )
+                        ),
+                        array(
+                            'label' => 'Configurações',
+                            'route' => 'configs'
+                        ),
                     )
                 )
             )

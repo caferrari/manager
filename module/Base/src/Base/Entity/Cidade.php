@@ -3,15 +3,14 @@
 namespace Base\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
-    CafCommon\AbstractEntity,
-    Zend\Crypt\Password\Bcrypt;
+    CafCommon\AbstractEntity;
 
 /**
  * @ORM\Table(name="cidade",
  *      uniqueConstraints={@ORM\UniqueConstraint(name="un_cidade_nome", columns={"nome", "uf"})},
  *      indexes={@ORM\Index(name="ind_cidade_uf", columns={"uf"})}
  * )
- * @ORM\Entity(repositoryClass="Base\Repository\Cidade") @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="Base\Repository\Cidade")
  */
 class Cidade extends AbstractEntity
 {

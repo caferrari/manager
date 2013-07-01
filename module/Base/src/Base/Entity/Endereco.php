@@ -3,12 +3,11 @@
 namespace Base\Entity;
 
 use Doctrine\ORM\Mapping as ORM,
-    CafCommon\AbstractEntity,
-    Zend\Crypt\Password\Bcrypt;
+    CafCommon\AbstractEntity;
 
 /**
  * @ORM\Table(name="endereco")
- * @ORM\Entity(repositoryClass="Base\Repository\Endereco") @ORM\HasLifecycleCallbacks
+ * @ORM\Entity
  */
 class Endereco extends AbstractEntity
 {

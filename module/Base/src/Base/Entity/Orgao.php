@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM,
 
 /**
  * @ORM\Table(name="orgao",uniqueConstraints={@ORM\UniqueConstraint(name="un_orgao_nome", columns={"nome"})})
- * @ORM\Entity(repositoryClass="Base\Repository\Orgao") @ORM\HasLifecycleCallbacks
+ * @ORM\Entity
  */
 class Orgao extends AbstractEntity
 {

@@ -19,6 +19,11 @@ class Usuario extends AbstractController
         $this->messages['error']['unique'] = 'Já existe um usuário utilizando este email';
     }
 
+    public function configsAction()
+    {
+
+    }
+
     public function loginAction()
     {
 

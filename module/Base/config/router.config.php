@@ -33,6 +33,16 @@ return array(
                     'action'     => 'logout',
                 ),
             ),
-        )
+        ),
+        'configs' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route'    => '/preferencias',
+                'defaults' => array(
+                    'controller' => 'usuario',
+                    'action'     => 'configs',
+                ),
+            ),
+        ),
     ),
 );

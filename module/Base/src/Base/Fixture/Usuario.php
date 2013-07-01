@@ -18,6 +18,7 @@ class Usuario extends AbstractFixture
             'senha' => 'admin123',
             'tipo' => 'a'
         );
+
         $entity = new UsuarioEntity($data);
 
         $manager->persist($entity);

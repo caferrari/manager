@@ -8,10 +8,9 @@ use Doctrine\ORM\Mapping as ORM,
     Zend\Permissions\Acl\Acl;
 
 /**
- * @ORM\Table(name="usuario",
- *      uniqueConstraints={@ORM\UniqueConstraint(name="un_usuario_email", columns={"email"})}
- * )
- * @ORM\Entity(repositoryClass="Base\Repository\Usuario") @ORM\HasLifecycleCallbacks
+ * @ORM\Table(name="usuario")
+ * @ORM\Entity(repositoryClass="Base\Repository\Usuario")
+ * @ORM\HasLifecycleCallbacks
  */
 class Usuario extends AbstractEntity
 {
@@ -42,6 +41,11 @@ class Usuario extends AbstractEntity
      * @ORM\Column(type="string", length=1)
      */
     protected $tipo;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Base\Entity\Pessoa", mappedBy="usuario")
+     */
+    private $pessoa;
 
     /**
      * @ORM\Column(type="string", length=40)

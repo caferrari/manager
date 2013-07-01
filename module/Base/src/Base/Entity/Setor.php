@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM,
 
 /**
  * @ORM\Table(name="setor", uniqueConstraints={@ORM\UniqueConstraint(name="un_setor_orgao_nome", columns={"orgao_id", "nome"})})
- * @ORM\Entity(repositoryClass="Base\Repository\Setor") @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass="Base\Repository\Setor")
  */
 class Setor extends AbstractEntity
 {
@@ -22,6 +22,7 @@ class Setor extends AbstractEntity
 
     /**
      * @ORM\ManyToOne(targetEntity="Base\Entity\Orgao")
+     * @ORM\JoinColumn(name="orgao_id", referencedColumnName="id")
      */
     protected $orgao;
 
@@ -40,6 +41,11 @@ class Setor extends AbstractEntity
      * @ORM\Column(type="string", length=150)
      */
     protected $nome;
+
+    /**
+     * @ORM\Column(type="string", length=150)
+     */
+    protected $lotacao;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
