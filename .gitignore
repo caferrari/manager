@@ -13,4 +13,4 @@ composer.phar
 vendor
 data/
 coverage
-!tests/vendor
+!module/Application/tests/vendor
