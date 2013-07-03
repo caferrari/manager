@@ -14,7 +14,7 @@ before_script:
   - phpenv rehash
   - composer install --dev --prefer-source
 
-script: vendor/bin/phpunit --configuration tests/phpunit.xml  --coverage-text --coverage-clover ./build/logs/clover.xml
+script: vendor/bin/phpunit --configuration module/Application/tests/travis.xml  --coverage-text --coverage-clover ./build/logs/clover.xml
 
 after_script:
   - vendor/bin/coveralls -v

@@ -19,13 +19,13 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => getcwd() . '/module/Base/view/layout/layout.phtml',
-            'application/index/index' => getcwd() . '/module/Base/view/application/index/index.phtml',
-            'error/404'               => getcwd() . '/module/Base/view/error/404.phtml',
-            'error/index'             => getcwd() . '/module/Base/view/error/index.phtml',
+            'layout/layout'           => getcwd() . '/module/Application/view/layout/layout.phtml',
+            'application/index/index' => getcwd() . '/module/Application/view/application/index/index.phtml',
+            'error/404'               => getcwd() . '/module/Application/view/error/404.phtml',
+            'error/index'             => getcwd() . '/module/Application/view/error/index.phtml',
         ),
         'template_path_stack' => array(
-            getcwd() . '/module/Base/view'
+            getcwd() . '/module/Application/view'
         ),
     )
 );
