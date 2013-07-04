@@ -18,10 +18,10 @@
 
     <filter>
         <whitelist>
-            <directory>./src/</directory>
+            <directory>../src/</directory>
             <exclude>
-                <directory>./src/Application/Fixture</directory>
-                <directory>./src/Acl/Fixture</directory>
+                <directory>../src/Application/Fixture</directory>
+                <directory>../src/Acl/Fixture</directory>
             </exclude>
         </whitelist>
     </filter>

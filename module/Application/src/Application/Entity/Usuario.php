@@ -46,7 +46,7 @@ class Usuario extends AbstractEntity
      * @ORM\ManyToOne(targetEntity="Application\Entity\Pessoa")
      * @ORM\JoinColumn(name="pessoa_id", referencedColumnName="id")
      */
-    private $pessoa;
+    protected $pessoa;
 
     /**
      * @ORM\Column(type="string", length=40)
